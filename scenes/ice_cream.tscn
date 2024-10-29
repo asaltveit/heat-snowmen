@@ -1,0 +1,77 @@
+[gd_scene load_steps=14 format=3 uid="uid://bbnfyct287htn"]
+
+[ext_resource type="Script" path="res://scripts/ice_cream.gd" id="1_4kwi1"]
+[ext_resource type="Texture2D" uid="uid://bktuktuwfig6j" path="res://assets/sprites/Ice Cream/IceCreamStrawberry.png" id="1_eoy6r"]
+[ext_resource type="Texture2D" uid="uid://ddkybqvm46674" path="res://assets/sprites/Ice Cream/IceCreamBlueberry.png" id="2_si2d2"]
+[ext_resource type="Texture2D" uid="uid://ddkmm58mpvjvw" path="res://assets/sprites/Ice Cream/IceCreamPistachio.png" id="3_e5nn8"]
+[ext_resource type="Texture2D" uid="uid://brepm44rmwhbc" path="res://assets/sprites/Ice Cream/IceCreamTangerine.png" id="4_cxr0x"]
+[ext_resource type="Texture2D" uid="uid://b0g7im7msxiqo" path="res://assets/sprites/Ice Cream/IceCreamBlueMoon.png" id="5_p3bf5"]
+[ext_resource type="Texture2D" uid="uid://bna8vehhyg0us" path="res://assets/sprites/Ice Cream/IceCreamPlum.png" id="6_0pifr"]
+[ext_resource type="Texture2D" uid="uid://hnus0ac6svj5" path="res://assets/sprites/Ice Cream/IceCreamChocolate.png" id="7_pe7kf"]
+[ext_resource type="Texture2D" uid="uid://cg622aoyq3prw" path="res://assets/sprites/Ice Cream/IceCreamCharcoal.png" id="8_727g3"]
+[ext_resource type="Texture2D" uid="uid://cuj5cu6ea868w" path="res://assets/sprites/Ice Cream/IceCreamCherry.png" id="9_ehtbe"]
+[ext_resource type="Texture2D" uid="uid://tg6mmxmig7jq" path="res://assets/sprites/Ice Cream/IceCreamLemon.png" id="10_duxch"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7u0rf"]
+radius = 22.0
+height = 60.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rjtl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eoy6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_si2d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e5nn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cxr0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p3bf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0pifr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pe7kf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_727g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ehtbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_duxch")
+}],
+"loop": true,
+"name": &"colorLoop",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ice_cream" type="CharacterBody2D"]
+script = ExtResource("1_4kwi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 15)
+shape = SubResource("CapsuleShape2D_7u0rf")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, 14)
+scale = Vector2(1.92187, 2.125)
+sprite_frames = SubResource("SpriteFrames_7rjtl")
+animation = &"colorLoop"
+autoplay = "colorLoop"
+frame = 5
+frame_progress = 0.940202
+speed_scale = 0.5

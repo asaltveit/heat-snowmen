@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelParameters" load_steps=2 format=3 uid="uid://pk30px4vpafv"]
+
+[ext_resource type="Script" path="res://scripts/resources/LevelParameters.gd" id="1_mlk62"]
+
+[resource]
+script = ExtResource("1_mlk62")
+title = ""
+level = 2
+snowmen_locations = [Vector2(500, 90), Vector2(100, 181), Vector2(900, 10)]
+snow_time = 1.0
+snowmen_time = 2.0

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://chqd7vvk2bofo"]
+
+[ext_resource type="AudioStream" uid="uid://bhcvv58t7f5lp" path="res://assets/sounds/514967__matrixxx__snow-dripping.wav" id="1_tcbik"]
+
+[node name="IceBGSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_tcbik")
+volume_db = 8.32
+pitch_scale = 0.72
+autoplay = true

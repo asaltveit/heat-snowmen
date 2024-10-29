@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl48ail4g0m77"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_41ani"]
+[ext_resource type="Script" path="res://scripts/LevelVariables.gd" id="2_gvjk7"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_41ani")
+
+[node name="LevelVariables" type="Node" parent="."]
+script = ExtResource("2_gvjk7")

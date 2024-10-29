@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwl557culxtyj"]
+
+[ext_resource type="Script" path="res://scripts/heat_gun.gd" id="1_agff3"]
+[ext_resource type="Texture2D" uid="uid://cyn6ptyg0428m" path="res://assets/sprites/Drawing-1.sketchpad.png" id="1_drfcd"]
+[ext_resource type="Texture2D" uid="uid://jn1l1h8di2g1" path="res://assets/sprites/red-circle.png" id="2_8ia3i"]
+[ext_resource type="AudioStream" uid="uid://sqisewbuir7h" path="res://assets/sounds/mixkit-short-laser-gun-shot-1670.wav" id="4_yq7kq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jxe7f"]
+radius = 60.0
+height = 122.0
+
+[sub_resource type="Animation" id="Animation_frptm"]
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("orange-rectangle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.56365, 0.00259447, 1.44609]
+}
+
+[sub_resource type="Animation" id="Animation_kxx8t"]
+resource_name = "move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("orange-rectangle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [3.48787e-16, -0.368264, 3.48787e-16, 0.366519, -0.00174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_266ha"]
+_data = {
+"RESET": SubResource("Animation_frptm"),
+"move": SubResource("Animation_kxx8t")
+}
+
+[node name="heat-gun" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_agff3")
+
+[node name="orange-rectangle" type="Sprite2D" parent="."]
+light_mask = 6
+visibility_layer = 4
+position = Vector2(1.20302, 99.3286)
+rotation = -1.56365
+scale = Vector2(0.252, 0.1335)
+texture = ExtResource("1_drfcd")
+offset = Vector2(-4.77388, -606.207)
+
+[node name="Muzzle" type="Marker2D" parent="orange-rectangle"]
+light_mask = 6
+visibility_layer = 4
+position = Vector2(-6.25981, -1081.09)
+rotation = -0.126311
+scale = Vector2(3.9911, 7.47849)
+skew = 0.0906874
+
+[node name="red-circle" type="Sprite2D" parent="."]
+light_mask = 6
+visibility_layer = 4
+position = Vector2(63, 154)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_8ia3i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 95)
+shape = SubResource("CapsuleShape2D_jxe7f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_266ha")
+}
+autoplay = "RESET"
+
+[node name="pew" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -50)
+stream = ExtResource("4_yq7kq")

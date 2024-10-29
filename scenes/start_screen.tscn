@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqmalmyfyrrbq"]
+
+[sub_resource type="GDScript" id="GDScript_xiput"]
+resource_name = "start_screen"
+script/source = "extends CanvasLayer
+
+@onready var settingsButton = $Menu/SettingsButton
+@onready var startButton = $Menu/StartButton
+@onready var helpButton = $Menu/HelpButton
+
+@onready var menu = $Menu
+
+signal openSettingsMenu
+signal openHelpMenu
+signal startGame
+
+
+func _ready():
+	pass 
+
+# TODO add a background
+# TODO fix alignment
+
+func _process(_delta):
+	pass
+
+func _on_start_button_pressed():
+	# Goes to first level
+	emit_signal(\"startGame\")
+	menu.visible = false
+
+
+func _on_settings_button_pressed():
+	emit_signal(\"openSettingsMenu\", \"start\")
+	menu.visible = false # is this needed?
+	
+
+func _on_help_button_pressed():
+	emit_signal(\"openHelpMenu\", \"start\")
+	menu.visible = false # is this needed?
+	
+"
+
+[node name="start_screen" type="CanvasLayer"]
+script = SubResource("GDScript_xiput")
+
+[node name="Menu" type="ColorRect" parent="."]
+offset_right = 1147.0
+offset_bottom = 645.0
+
+[node name="Title" type="Label" parent="Menu"]
+offset_left = 500.0
+offset_top = 97.0
+offset_right = 800.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 40
+text = "Game Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="Menu"]
+layout_direction = 2
+offset_left = 500.0
+offset_top = 300.0
+offset_right = 800.0
+offset_bottom = 400.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 37
+text = "Start"
+
+[node name="HelpButton" type="Button" parent="Menu"]
+offset_left = 500.0
+offset_top = 450.0
+offset_right = 800.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 30
+text = "Help"
+
+[node name="SettingsButton" type="Button" parent="Menu"]
+offset_left = 500.0
+offset_top = 530.0
+offset_right = 800.0
+offset_bottom = 580.0
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[connection signal="pressed" from="Menu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="Menu/SettingsButton" to="." method="_on_settings_button_pressed"]

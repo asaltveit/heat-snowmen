@@ -1,0 +1,190 @@
+[gd_scene load_steps=23 format=3 uid="uid://ccwolovfqt7p5"]
+
+[ext_resource type="Script" path="res://scripts/snowman.gd" id="1_1gnx7"]
+[ext_resource type="Texture2D" uid="uid://uqtlnpnuqolx" path="res://assets/sprites/snowman/PNG/Snowman-tileset.png" id="1_xxnvu"]
+[ext_resource type="Shader" path="res://shaders/snowman.gdshader" id="2_05vd5"]
+[ext_resource type="AudioStream" uid="uid://cuty0vn08fxmi" path="res://assets/sounds/deep-oh-noo.wav" id="4_mkkx3"]
+[ext_resource type="AudioStream" uid="uid://pnsfl3mrx3gt" path="res://assets/sounds/longer-oh-noo.wav" id="5_2074f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7lsa"]
+shader = ExtResource("2_05vd5")
+shader_parameter/quantity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr6ql"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(1, 1, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tutj0"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(17, 1, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j01c"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(33, 1, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s80ps"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(49, 1, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyaov"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(1, 24, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etsci"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(17, 24, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6v6i"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(33, 24, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn6e6"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(49, 24, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kupjv"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(65, 24, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bja4q"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(81, 24, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5urw"]
+atlas = ExtResource("1_xxnvu")
+region = Rect2(97, 24, 15, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mknr7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr6ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tutj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0j01c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s80ps")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyaov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etsci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6v6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn6e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kupjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bja4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5urw")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grqio"]
+size = Vector2(15.75, 18.625)
+
+[sub_resource type="Animation" id="Animation_47yri"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/quantity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jcbrg"]
+resource_local_to_scene = true
+resource_name = "hurt"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/quantity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gm2j"]
+_data = {
+"RESET": SubResource("Animation_47yri"),
+"hurt": SubResource("Animation_jcbrg")
+}
+
+[node name="Snowman" type="CharacterBody2D"]
+light_mask = 24
+visibility_layer = 2
+z_index = 1
+scale = Vector2(8, 8)
+script = ExtResource("1_1gnx7")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_m7lsa")
+sprite_frames = SubResource("SpriteFrames_mknr7")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.148182
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.125)
+shape = SubResource("RectangleShape2D_grqio")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0gm2j")
+}
+autoplay = "RESET"
+
+[node name="LivesLabel" type="Label" parent="."]
+offset_left = -3.75
+offset_top = -22.25
+offset_right = 4.25
+offset_bottom = -4.25
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "3"
+
+[node name="DeepDyingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_mkkx3")
+volume_db = 4.394
+attenuation = 1.1487
+
+[node name="LongDyingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2074f")
+volume_db = 4.394
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=3 uid="uid://bre2e0kd1as8p"]
+
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_0ltu2"]
+[ext_resource type="Script" path="res://scripts/DeathClock.gd" id="2_l4tew"]
+[ext_resource type="PackedScene" uid="uid://bia8hl5eswcj5" path="res://scenes/menu_ui.tscn" id="3_aqpmq"]
+[ext_resource type="Script" path="res://scripts/LevelTimer.gd" id="3_uvel8"]
+[ext_resource type="PackedScene" uid="uid://dpj5bi8y0l6ba" path="res://scenes/pause_menu.tscn" id="4_3w6e3"]
+[ext_resource type="PackedScene" uid="uid://bqmalmyfyrrbq" path="res://scenes/start_screen.tscn" id="5_iqb6n"]
+[ext_resource type="PackedScene" uid="uid://bscuslf0wudtg" path="res://scenes/settings.tscn" id="5_j7y0l"]
+[ext_resource type="PackedScene" uid="uid://bgq5vfgcp0enx" path="res://scenes/help.tscn" id="6_6goac"]
+[ext_resource type="Script" path="res://scripts/LevelCountDown.gd" id="9_7mrr1"]
+
+[node name="GameManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_0ltu2")
+
+[node name="DeathClock" type="Timer" parent="."]
+wait_time = 2.0
+script = ExtResource("2_l4tew")
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 300.0
+script = ExtResource("3_uvel8")
+
+[node name="LevelCompleteMenu" parent="." instance=ExtResource("3_aqpmq")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_3w6e3")]
+
+[node name="start_screen" parent="." instance=ExtResource("5_iqb6n")]
+
+[node name="Settings" parent="." instance=ExtResource("5_j7y0l")]
+
+[node name="Help" parent="." instance=ExtResource("6_6goac")]
+
+[node name="LevelCountDown" type="Timer" parent="."]
+script = ExtResource("9_7mrr1")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="LevelCountDown" to="LevelCountDown" method="_on_timeout"]
