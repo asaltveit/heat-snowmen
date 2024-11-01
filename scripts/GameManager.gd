@@ -39,24 +39,17 @@ extends Node
 @onready var deathClock = $DeathClock
 # Level Countdown Timer
 @onready var levelCountdownTimer = $LevelCountDown
-# Level Completed menu
+
 @onready var level = $".."
-@onready var levelComplete = $LevelCompleteMenu
-@onready var levelCompleteMenu = $"LevelCompleteMenu/Menu"
-# Menu fields
-@onready var timeCompletedValue = $LevelCompleteMenu/Menu/Container/TimeElapsed/Value
-@onready var snowmenValue = $LevelCompleteMenu/Menu/Container/Snowmen/Value
-@onready var levelValue = $LevelCompleteMenu/Menu/Container/Level/Value
-# Pause menu
-@onready var pauseMenu = $"PauseMenu" # ?
-@onready var pauseMenuNode = $"PauseMenu/Menu" # ?
-@onready var pauseMenuContinueButton = $"PauseMenu/Menu/Container/ContinueButton"
-@onready var pauseMenuRestartButton = $"PauseMenu/Menu/Container/RestartButton"
+
 # Primary Menu (for pause or level completed)
 @onready var primaryMenu = $PrimaryMenu/Menu
 @onready var primaryMenuContinueButton = $"PrimaryMenu/Menu/Container/ContinueButton"
 @onready var primaryMenuRestartButton = $"PrimaryMenu/Menu/Container/RestartButton"
-
+# Menu fields
+@onready var timeCompletedValue = $PrimaryMenu/Menu/Container/TimeElapsed/Value
+@onready var snowmenValue = $PrimaryMenu/Menu/Container/Snowmen/Value
+@onready var levelValue = $PrimaryMenu/Menu/Container/Level/Value
 # Start screen
 @onready var startScreen = $start_screen
 @onready var startScreenNode = $start_screen/Menu

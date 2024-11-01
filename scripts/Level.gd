@@ -40,8 +40,6 @@ var bg_music_on = false
 @onready var deathClock = $GameManager/DeathClock
 # Max limit
 @onready var levelTimer = $GameManager/LevelTimer
-# level ended menu
-@onready var levelMenu = $GameManager/LevelCompleteMenu
 
 #@onready var snowmanCreationTimer = $Snow/SnowmanCreationTimer
 # This is level now, is it needed?
