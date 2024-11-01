@@ -14,8 +14,12 @@ extends ColorRect
 
 signal openSettingsMenu
 signal openHelpMenu
+
 signal stopDeathClock
 signal startDeathClock
+
+signal stopLevelCountdownClock
+signal startLevelCountdownClock
 
 func _ready():
 	level.openPrimaryMenu.connect(open_menu)
@@ -30,7 +34,10 @@ func createTitle():
 		level_title.text = "Menu" # Just in case
 
 func open_menu(final_time, final_num_snowmen, final_level):
+	# stop all of the clocks/timers
 	emit_signal("stopDeathClock")
+	emit_signal("stopLevelCountdownClock")
+	
 	get_tree().paused = true
 	menu.visible = true
 	animationPlayer.play("RESET")
@@ -44,7 +51,14 @@ func open_menu(final_time, final_num_snowmen, final_level):
 
 
 func _on_continue_button_pressed():
+	# Turn on clocks/timers
+	# TODO separate function?
 	emit_signal("startDeathClock")
+	# TODO Only start if it was going
+	# TODO What if it just got to 0 before pause?
+	if Game.level_time_limit > 0:
+		emit_signal("startLevelCountdownClock")
+	
 	get_tree().paused = false
 	menu.visible = false
 	if Game.primaryMenuType == "levelComplete":
@@ -53,7 +67,11 @@ func _on_continue_button_pressed():
 		get_tree().reload_current_scene()
 
 func _on_restart_button_pressed():
+	# Turn on clocks/timers
 	emit_signal("startDeathClock")
+	if Game.level_time_limit > 0:
+		emit_signal("startLevelCountdownClock")
+	
 	get_tree().paused = false
 	menu.visible = false
 	# Restart current scene

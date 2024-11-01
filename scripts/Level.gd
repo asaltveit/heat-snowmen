@@ -75,7 +75,6 @@ func _ready():
 		
 	deathClock.createSnow.connect(create_random_snow)
 	settings.toggleBgMusic.connect(toggle_bg_music)
-	#levelTimer.levelOutOfTime.connect(level_out_of_time)
 	
 	# Only when level starts - needed?
 	if Game.bg_music_on:

@@ -10,8 +10,10 @@ extends CanvasLayer
 @onready var levelValue = $Menu/Container/Level/Value
 
 signal startNextLevel
+
 signal startDeathClock
 signal stopDeathClock
+
 signal openSettingsMenu
 signal openHelpMenu
 
@@ -31,10 +33,12 @@ func open_level_complete_menu(final_time, final_num_snowmen, final_level):
 	snowmenValue.text = str(final_num_snowmen)
 	levelValue.text = str(final_level)
 
-
+# TODO rename to next level button?
 func _on_continue_button_pressed():
-	# TODO rename to next level button?
+	# Stop all of the clocks/timers
 	emit_signal("startDeathClock")
+	
+	
 	get_tree().paused = false
 	menu.visible = false
 	# Can just reload with new resource

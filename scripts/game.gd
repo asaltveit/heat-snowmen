@@ -1,6 +1,6 @@
 extends Node2D
 
-# The fields below are definitely used:
+# TODO How many autoload variables are needed/normal?
 
 # For scene switching
 var current_scene = null
@@ -26,7 +26,9 @@ var primaryMenuType = "" # "pause", "levelComplete"
 # TODO set these from level resource
 # TODO succeed within time limit and shortest time level type
 # need a var for level type? or just 0 in one and not 0 in the other?
-var level_time_limit = 5 # in seconds? so 300 = 5 minutes?
+
+# If 0, timer won't run (except continue on menu)
+var level_time_limit = 0 # in seconds? so 300 = 5 minutes?
 # TODO don't hit the icecream level type
 var total_icecream = 0
 

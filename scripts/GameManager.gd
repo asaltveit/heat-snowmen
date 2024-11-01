@@ -78,6 +78,9 @@ func _on_ready():
 	primaryMenu.stopDeathClock.connect(stop_death_clock)
 	primaryMenu.startDeathClock.connect(start_death_clock)
 	
+	primaryMenu.stopLevelCountdownClock.connect(stop_level_countdown_clock)
+	primaryMenu.startLevelCountdownClock.connect(start_level_countdown_clock)
+	
 	startScreen.openSettingsMenu.connect(open_settings_menu)
 	startScreen.openHelpMenu.connect(open_help_menu)
 	startScreen.startGame.connect(start_game)
@@ -88,12 +91,19 @@ func _on_ready():
 	levelCountdownTimer.exceedsLevelTimeLimit.connect(level_out_of_time)
 	
 
+# TODO Better way to toggle the clocks?
 # snow creation timer	
 func stop_death_clock():
 	deathClock.stop()
 	
 func start_death_clock():
 	deathClock.start()
+
+func stop_level_countdown_clock():
+	levelCountdownTimer.stop()
+	
+func start_level_countdown_clock():
+	levelCountdownTimer.start()
 	
 func level_out_of_time():
 	# TODO popup
