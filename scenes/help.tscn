@@ -12,9 +12,6 @@ signal goToPreviousPopup
 func _ready():
 	gameManager.openHelpMenu.connect(open_help_menu)
 
-func _process(_delta):
-	pass
-
 # TODO Needs multiple clicks to open 
 func open_help_menu():
 	menu.visible = true

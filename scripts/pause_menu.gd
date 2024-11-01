@@ -16,7 +16,7 @@ signal stopDeathClock
 signal startDeathClock
 
 func _ready():
-	level.openPauseMenu.connect(open_pause_menu)
+	#level.openPauseMenu.connect(open_pause_menu)
 	# Game.current_level used to index an array (starts at 0)
 	title_label.text = "Level " + str(Game.current_level+1) + " Paused"
 	

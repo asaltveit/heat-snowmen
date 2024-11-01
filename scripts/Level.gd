@@ -1,7 +1,7 @@
 extends Node2D
 
 signal openLevelMenu
-signal openPauseMenu
+signal openPrimaryMenu
 
 @onready var settings = $GameManager/Settings
 
@@ -151,13 +151,16 @@ func _process(_delta):
 		#iceBGSound.stop()
 	if Input.is_action_just_pressed("pause"):
 		get_final_time()
-		emit_signal("openPauseMenu", final_time, final_num_snowmen, final_level)
+		Game.primaryMenuType = "pause"
+		#emit_signal("openPauseMenu", final_time, final_num_snowmen, final_level)
+		emit_signal("openPrimaryMenu", final_time, final_num_snowmen, final_level)
 	#Possibly should be elif?
 	if not allowLevelComplete:
 		pass
 	elif numSnowmen <= 0:
 		get_final_time()
-		emit_signal("openLevelMenu", final_time, final_num_snowmen, final_level)
+		Game.primaryMenuType = "levelComplete"
+		emit_signal("openPrimaryMenu", final_time, final_num_snowmen, final_level)
 	elif numSnowmen >= snowmenLimit:
 		# TODO popup?
 		print("You lost! You've been overrun with snowmen!")

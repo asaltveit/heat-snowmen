@@ -1,5 +1,8 @@
 extends Node
 
+# If you lose, you have to repeat the level before continuing
+#	disbaled button here? with text saying you have to win to
+#	continue?
 # How to lose? Or game end?
 #	1 Get overrun by snowmen - have a limit, 100? 50?
 #		Have an if in the creation func to skip if over limit
@@ -14,6 +17,9 @@ extends Node
 
 # so 3/4 level types: time limit, # snowmen before getting rid of all?,
 # icecream - add time, collect icecream
+
+# TODO Add a game ending scene (when player is out of levels)
+#	Plus an option to go back into other levels
 
 # TODO Add to resources:
 # 	ice cream - number, locations, penalty?
@@ -46,6 +52,11 @@ extends Node
 @onready var pauseMenuNode = $"PauseMenu/Menu" # ?
 @onready var pauseMenuContinueButton = $"PauseMenu/Menu/Container/ContinueButton"
 @onready var pauseMenuRestartButton = $"PauseMenu/Menu/Container/RestartButton"
+# Primary Menu (for pause or level completed)
+@onready var primaryMenu = $PrimaryMenu/Menu
+@onready var primaryMenuContinueButton = $"PrimaryMenu/Menu/Container/ContinueButton"
+@onready var primaryMenuRestartButton = $"PrimaryMenu/Menu/Container/RestartButton"
+
 # Start screen
 @onready var startScreen = $start_screen
 @onready var startScreenNode = $start_screen/Menu
@@ -62,15 +73,10 @@ func _on_ready():
 		startScreenNode.visible = false
 		deathClock.start()
 	
-	levelComplete.openSettingsMenu.connect(open_settings_menu)
-	levelComplete.openHelpMenu.connect(open_help_menu)
-	levelComplete.startDeathClock.connect(start_death_clock)
-	levelComplete.stopDeathClock.connect(stop_death_clock)
-	
-	pauseMenu.openSettingsMenu.connect(open_settings_menu)
-	pauseMenu.openHelpMenu.connect(open_help_menu)
-	pauseMenu.stopDeathClock.connect(stop_death_clock)
-	pauseMenu.startDeathClock.connect(start_death_clock)
+	primaryMenu.openSettingsMenu.connect(open_settings_menu)
+	primaryMenu.openHelpMenu.connect(open_help_menu)
+	primaryMenu.stopDeathClock.connect(stop_death_clock)
+	primaryMenu.startDeathClock.connect(start_death_clock)
 	
 	startScreen.openSettingsMenu.connect(open_settings_menu)
 	startScreen.openHelpMenu.connect(open_help_menu)
@@ -104,12 +110,14 @@ func start_game():
 		levelCountdownTimer.start()
 	
 # secondary menus - TODO func open_secondary_menu(previous, openSignal)
-func open_settings_menu(previous):
-	Game.previous_popup = previous
+func open_settings_menu():
+	# TODO slim this down
+	Game.previous_popup = Game.primaryMenuType
 	emit_signal("openSettingsMenu")
 	
-func open_help_menu(previous):
-	Game.previous_popup = previous
+func open_help_menu():
+	# TODO slim this down
+	Game.previous_popup = Game.primaryMenuType
 	emit_signal("openHelpMenu")
 
 # TODO Add tests to make sure only correct popup is visible
@@ -122,10 +130,8 @@ func go_to_previous_popup():
 	elif Game.previous_popup == "help":
 		# Needed?
 		pass
-	elif Game.previous_popup == "pause":
-		pauseMenuNode.visible = true
-	elif Game.previous_popup == "level":
-		levelCompleteMenu.visible = true
+	elif Game.previous_popup == "pause" or Game.previous_popup == "levelComplete":
+		primaryMenu.visible = true
 	else:
 		print("Error: No previous popup")
 	

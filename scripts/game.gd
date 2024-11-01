@@ -20,6 +20,8 @@ var show_start_screen = true
 # Accessed in snow when starting timer
 var snowman_creation_timer_wait_time = 10
 
+var primaryMenuType = "" # "pause", "levelComplete"
+
 # For level types
 # TODO set these from level resource
 # TODO succeed within time limit and shortest time level type
@@ -31,8 +33,6 @@ var total_icecream = 0
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
-	# Goes to start menu - is this needed?
-	#goto_scene("res://scenes/level.tscn")
 	
 func goto_scene(path, level=0):
 	# This function will usually be called from a signal callback,

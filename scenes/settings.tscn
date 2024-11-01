@@ -20,9 +20,6 @@ func _ready():
 	bgMusicButton.text = \"on\" if Game.bg_music_on else \"off\"
 
 # TODO add button icons
-
-func _process(_delta):
-	pass
 	
 func open_settings_menu():
 	menu.visible = true

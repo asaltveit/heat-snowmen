@@ -32,9 +32,7 @@ func open_level_complete_menu(final_time, final_num_snowmen, final_level):
 	levelValue.text = str(final_level)
 
 
-# TODO Switch order of buttons (?)
 func _on_continue_button_pressed():
-	print("level menu continue pressed")
 	# TODO rename to next level button?
 	emit_signal("startDeathClock")
 	get_tree().paused = false
@@ -51,10 +49,10 @@ func _on_restart_button_pressed():
 
 
 func _on_settings_button_pressed():
-	emit_signal("openSettingsMenu", "level")
+	emit_signal("openSettingsMenu")
 	menu.visible = false
 
 
 func _on_help_button_pressed():
-	emit_signal("openHelpMenu", "level")
+	emit_signal("openHelpMenu")
 	menu.visible = false
