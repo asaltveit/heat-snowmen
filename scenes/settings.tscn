@@ -58,42 +58,50 @@ func _on_back_button_pressed():
 script = SubResource("GDScript_njwyo")
 
 [node name="Menu" type="ColorRect" parent="."]
-visible = false
 offset_right = 1155.0
 offset_bottom = 654.0
-color = Color(0.137255, 0.184314, 0.168627, 1)
+
+[node name="InnerRectangle" type="ColorRect" parent="Menu"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 64.0
+offset_right = 1013.0
+offset_bottom = 586.0
+color = Color(1, 1, 0.65098, 1)
 
 [node name="BackButton" parent="Menu" instance=ExtResource("1_5ot48")]
 layout_mode = 1
-offset_left = 344.0
-offset_top = -391.0
-offset_right = 513.0
-offset_bottom = -327.0
+offset_left = 476.0
+offset_top = -180.0
+offset_right = 684.0
+offset_bottom = -114.0
 text = "Back"
 icon = ExtResource("2_ltjbj")
 
 [node name="Title" type="Label" parent="Menu"]
 layout_mode = 0
-offset_left = 379.0
-offset_top = 50.0
-offset_right = 533.0
-offset_bottom = 105.0
+offset_left = 523.0
+offset_top = 99.0
+offset_right = 677.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Settings"
 
 [node name="Sounds" type="ColorRect" parent="Menu"]
 layout_mode = 0
-offset_left = 347.0
-offset_top = 121.0
-offset_right = 497.0
-offset_bottom = 157.0
-color = Color(1, 0.133333, 1, 1)
+offset_left = 359.0
+offset_top = 201.0
+offset_right = 509.0
+offset_bottom = 237.0
+color = Color(1, 0.133333, 1, 0)
 
 [node name="Toggle" type="Button" parent="Menu/Sounds"]
 layout_mode = 0
-offset_left = 74.0
-offset_right = 131.0
-offset_bottom = 21.0
+offset_left = 112.0
+offset_top = -3.0
+offset_right = 169.0
+offset_bottom = 28.0
 toggle_mode = true
 text = "on"
 
@@ -101,22 +109,24 @@ text = "on"
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Sounds"
 
 [node name="BgMusic" type="ColorRect" parent="Menu"]
 layout_mode = 0
-offset_left = 334.0
-offset_top = 175.0
-offset_right = 513.0
-offset_bottom = 215.0
-color = Color(0.027451, 0.0431373, 1, 1)
+offset_left = 358.0
+offset_top = 277.0
+offset_right = 537.0
+offset_bottom = 317.0
+color = Color(0.027451, 0.0431373, 1, 0)
 
 [node name="Toggle" type="Button" parent="Menu/BgMusic"]
 layout_mode = 0
-offset_left = 76.0
-offset_right = 96.0
-offset_bottom = 16.0
+offset_left = 127.0
+offset_top = -1.0
+offset_right = 155.0
+offset_bottom = 30.0
 toggle_mode = true
 text = "on"
 
@@ -126,7 +136,8 @@ offset_left = 1.0
 offset_top = 3.0
 offset_right = 73.0
 offset_bottom = 26.0
-theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "BG Music"
 
 [connection signal="pressed" from="Menu/BackButton" to="." method="_on_back_button_pressed"]
