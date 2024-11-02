@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgq5vfgcp0enx"]
+[gd_scene load_steps=3 format=3 uid="uid://bgq5vfgcp0enx"]
+
+[ext_resource type="PackedScene" uid="uid://bam0yr54g5n11" path="res://scenes/primary_menu_button.tscn" id="1_74km8"]
 
 [sub_resource type="GDScript" id="GDScript_f1se2"]
 resource_name = "Help"
@@ -16,7 +18,8 @@ func _ready():
 func open_help_menu():
 	menu.visible = true
 
-func _on_back_pressed():
+
+func _on_back_button_pressed():
 	menu.visible = false
 	emit_signal(\"goToPreviousPopup\")
 "
@@ -39,6 +42,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Help"
 
+[node name="BackButton" parent="Menu" instance=ExtResource("1_74km8")]
+layout_mode = 1
+offset_left = 399.0
+offset_top = -330.0
+offset_right = 535.0
+offset_bottom = -272.0
+text = "Back"
+
 [node name="Body" type="Label" parent="Menu"]
 layout_mode = 0
 offset_left = 376.0
@@ -50,12 +61,4 @@ text = "Press the spacebar to shoot the snowmen.
 
 Press p to pause"
 
-[node name="Back" type="Button" parent="Menu"]
-layout_mode = 0
-offset_left = 431.0
-offset_top = 304.0
-offset_right = 522.0
-offset_bottom = 386.0
-text = "Back"
-
-[connection signal="pressed" from="Menu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Menu/BackButton" to="." method="_on_back_button_pressed"]
