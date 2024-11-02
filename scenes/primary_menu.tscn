@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3f8uxxp155r7"]
+[gd_scene load_steps=7 format=3 uid="uid://c3f8uxxp155r7"]
 
 [ext_resource type="Script" path="res://scripts/primary_menu.gd" id="1_fi2a2"]
+[ext_resource type="PackedScene" uid="uid://bam0yr54g5n11" path="res://scenes/primary_menu_button.tscn" id="2_y3k16"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xb621"]
 
@@ -146,7 +147,7 @@ offset_right = 354.0
 offset_bottom = 67.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
-text = "Snowmen: "
+text = "Total snowmen: "
 uppercase = true
 
 [node name="Value" type="Label" parent="Menu/Container/Snowmen"]
@@ -166,95 +167,39 @@ theme_override_colors/font_color = Color(0, 0, 0, 0.352941)
 theme_override_font_sizes/font_size = 20
 text = "1"
 
-[node name="Level" type="ColorRect" parent="Menu/Container"]
+[node name="RestartButton" parent="Menu/Container" instance=ExtResource("2_y3k16")]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 50.0
-offset_top = -55.0
-offset_right = 50.0
-offset_bottom = -55.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
-[node name="Label" type="Label" parent="Menu/Container/Level"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 210.0
-offset_top = 80.0
-offset_right = 354.0
-offset_bottom = 107.0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Highest Level: "
-uppercase = true
-
-[node name="Value" type="Label" parent="Menu/Container/Level"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -668.0
-offset_top = 80.0
-offset_right = -268.0
-offset_bottom = 107.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0.352941)
-theme_override_font_sizes/font_size = 20
-text = "1"
-
-[node name="ContinueButton" type="Button" parent="Menu/Container"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 553.0
-offset_top = -205.0
-offset_right = 813.0
-offset_bottom = -115.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 25
-text = "Continue"
-
-[node name="RestartButton" type="Button" parent="Menu/Container"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -810.0
-offset_top = -204.0
-offset_right = -540.0
-offset_bottom = -114.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 25
+offset_left = 270.0
+offset_top = -199.0
+offset_right = 489.0
+offset_bottom = -120.0
 text = "Restart"
 
-[node name="SettingsButton" type="Button" parent="Menu/Container"]
-layout_mode = 0
-offset_left = 675.0
-offset_top = 193.0
-offset_right = 774.0
-offset_bottom = 240.0
-text = "Settings"
+[node name="ContinueButton" parent="Menu/Container" instance=ExtResource("2_y3k16")]
+layout_mode = 1
+offset_left = 558.0
+offset_top = -201.0
+offset_right = 797.0
+offset_bottom = -119.0
+text = "Continue"
 
-[node name="HelpButton" type="Button" parent="Menu/Container"]
-layout_mode = 0
-offset_left = 673.0
-offset_top = 269.0
-offset_right = 778.0
-offset_bottom = 315.0
+[node name="HelpButton" parent="Menu/Container" instance=ExtResource("2_y3k16")]
+layout_mode = 1
+offset_left = 680.0
+offset_top = -319.0
+offset_right = 777.0
+offset_bottom = -273.0
+theme_override_font_sizes/font_size = 20
 text = "Help"
+
+[node name="SettingsButton" parent="Menu/Container" instance=ExtResource("2_y3k16")]
+layout_mode = 1
+offset_left = 673.0
+offset_top = -397.0
+offset_right = 794.0
+offset_bottom = -350.0
+theme_override_font_sizes/font_size = 20
+text = "Settings"
 
 [node name="OpenMenuAnimation" type="AnimationPlayer" parent="Menu"]
 root_node = NodePath("../..")
@@ -262,7 +207,7 @@ libraries = {
 "": SubResource("AnimationLibrary_qt1qt")
 }
 
-[connection signal="pressed" from="Menu/Container/ContinueButton" to="Menu" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Menu/Container/RestartButton" to="Menu" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Menu/Container/SettingsButton" to="Menu" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Menu/Container/ContinueButton" to="Menu" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Menu/Container/HelpButton" to="Menu" method="_on_help_button_pressed"]
+[connection signal="pressed" from="Menu/Container/SettingsButton" to="Menu" method="_on_settings_button_pressed"]

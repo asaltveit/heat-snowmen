@@ -9,7 +9,6 @@ extends ColorRect
 
 @onready var timeCompletedValue = $Container/TimeElapsed/Value
 @onready var snowmenValue = $Container/Snowmen/Value
-@onready var levelValue = $Container/Level/Value
 
 
 signal openSettingsMenu
@@ -24,6 +23,7 @@ signal startLevelCountdownClock
 func _ready():
 	level.openPrimaryMenu.connect(open_menu)
 	
+	
 func createTitle():
 	if Game.primaryMenuType == "pause":
 		# Game.current_level used to index an array (starts at 0)
@@ -33,7 +33,7 @@ func createTitle():
 	else:
 		level_title.text = "Menu" # Just in case
 
-func open_menu(final_time, final_num_snowmen, final_level):
+func open_menu(final_time, final_num_snowmen):
 	# stop all of the clocks/timers
 	emit_signal("stopDeathClock")
 	emit_signal("stopLevelCountdownClock")
@@ -47,7 +47,6 @@ func open_menu(final_time, final_num_snowmen, final_level):
 	# Set fields
 	timeCompletedValue.text = str(final_time)
 	snowmenValue.text = str(final_num_snowmen)
-	levelValue.text = str(final_level)
 
 
 func _on_continue_button_pressed():

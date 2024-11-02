@@ -27,11 +27,10 @@ var rand_x
 var numSnowmen = 0 # can decrease (and increase)
 var final_time = ""
 var final_num_snowmen = 0 # only increase
-var final_level = 1
 var level_start_time
 
 # Limits - Could change based on level in future
-var snowmenLimit = 30
+var snowmenLimit = 20
 var gameTimeLimit = 300 # 5x60 seconds = 5 minutes
 
 # Is this separately needed?
@@ -41,7 +40,6 @@ var bg_music_on = false
 # Max limit
 @onready var levelTimer = $GameManager/LevelTimer
 
-#@onready var snowmanCreationTimer = $Snow/SnowmanCreationTimer
 # This is level now, is it needed?
 @onready var level = $'.'
 
@@ -56,8 +54,6 @@ var locations = [Vector2(274, 181), Vector2(100, 181)]
 
 
 func _ready():
-	# TODO final_level isn't different than current level
-	final_level = Game.current_level+1
 	# For testing icecream
 	# create_icecream()
 	
@@ -116,7 +112,6 @@ func create_snowman(pos):
 	# TODO should have a check for any snowmen too close/overlapping
 	# check for snowman on borders/boundaries
 	
-	# TODO: Add animation player individually
 	var snowman = preload("res://scenes/Snowman.tscn").instantiate()
 	# TODO: Don't spawn beyond/on boundaries
 	# TODO: Bottom right corner of snowman on snow center currently
@@ -138,7 +133,6 @@ func get_final_time():
 	# Time to complete in seconds
 	var time_taken = (Time.get_ticks_msec() - level_start_time) / 1000.0 # Convert to seconds
 	var time_rounded = str(roundf(time_taken)) + " secs"
-	# Final results
 	# TODO Put in Game vars?
 	final_time = time_rounded
 
@@ -149,15 +143,14 @@ func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		get_final_time()
 		Game.primaryMenuType = "pause"
-		#emit_signal("openPauseMenu", final_time, final_num_snowmen, final_level)
-		emit_signal("openPrimaryMenu", final_time, final_num_snowmen, final_level)
+		emit_signal("openPrimaryMenu", final_time, final_num_snowmen)
 	#Possibly should be elif?
 	if not allowLevelComplete:
 		pass
 	elif numSnowmen <= 0:
 		get_final_time()
 		Game.primaryMenuType = "levelComplete"
-		emit_signal("openPrimaryMenu", final_time, final_num_snowmen, final_level)
+		emit_signal("openPrimaryMenu", final_time, final_num_snowmen)
 	elif numSnowmen >= snowmenLimit:
 		# TODO popup?
 		print("You lost! You've been overrun with snowmen!")

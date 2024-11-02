@@ -11,5 +11,4 @@ func _ready():
 func hit():
 	# TODO add error noise
 	# TODO decrease num icecreams?
-	print("hit an ice cream")
 	queue_free()

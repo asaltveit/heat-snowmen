@@ -46,10 +46,6 @@ extends Node
 @onready var primaryMenu = $PrimaryMenu/Menu
 @onready var primaryMenuContinueButton = $"PrimaryMenu/Menu/Container/ContinueButton"
 @onready var primaryMenuRestartButton = $"PrimaryMenu/Menu/Container/RestartButton"
-# Menu fields
-@onready var timeCompletedValue = $PrimaryMenu/Menu/Container/TimeElapsed/Value
-@onready var snowmenValue = $PrimaryMenu/Menu/Container/Snowmen/Value
-@onready var levelValue = $PrimaryMenu/Menu/Container/Level/Value
 # Start screen
 @onready var startScreen = $start_screen
 @onready var startScreenNode = $start_screen/Menu
