@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_0ltu2"]
 [ext_resource type="Script" path="res://scripts/DeathClock.gd" id="2_l4tew"]
 [ext_resource type="Script" path="res://scripts/LevelTimer.gd" id="3_uvel8"]
-[ext_resource type="PackedScene" uid="uid://bru36y61hfv8u" path="res://scenes/Menus/start_screen.tscn" id="5_iqb6n"]
+[ext_resource type="PackedScene" uid="uid://5wb5mxsdys5b" path="res://scenes/start_screen.tscn" id="5_iqb6n"]
 [ext_resource type="PackedScene" uid="uid://co21fch20gscb" path="res://scenes/settings.tscn" id="5_j7y0l"]
-[ext_resource type="PackedScene" uid="uid://bgq5vfgcp0enx" path="res://scenes/Menus/help.tscn" id="6_6goac"]
+[ext_resource type="PackedScene" path="res://scenes/help.tscn" id="6_6goac"]
 [ext_resource type="Script" path="res://scripts/LevelCountDown.gd" id="9_7mrr1"]
-[ext_resource type="PackedScene" uid="uid://dt7gf4cfx0n7e" path="res://scenes/primary_menu.tscn" id="10_hsyk5"]
+[ext_resource type="PackedScene" path="res://scenes/primary_menu.tscn" id="10_hsyk5"]
 
 [node name="GameManager" type="Node"]
 process_mode = 3

@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://5wb5mxsdys5b"]
+[gd_scene load_steps=3 format=3 uid="uid://bru36y61hfv8u"]
 
-[ext_resource type="PackedScene" uid="uid://bam0yr54g5n11" path="res://scenes/Menus/primary_menu_button.tscn" id="1_l70m6"]
+[ext_resource type="PackedScene" uid="uid://cjtrpsgul3n1g" path="res://scenes/primary_menu_button.tscn" id="1_l70m6"]
 
 [sub_resource type="GDScript" id="GDScript_xiput"]
 resource_name = "start_screen"
