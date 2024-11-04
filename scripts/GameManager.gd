@@ -60,9 +60,14 @@ extends Node
 # Internal menus
 @onready var settingsMenu = $Settings
 @onready var helpMenu = $Help
+# Fail Menu
+@onready var failMenu = $FailMenu
+@onready var failMenuNode = $FailMenu/Menu
+@onready var failMenuRestartButton = $"FailMenu/Menu/RestartButton"
 
 signal openSettingsMenu
 signal openHelpMenu
+signal openFailMenu
 
 func _on_ready():
 	# Only show start screen on first level+not on restart
@@ -74,6 +79,11 @@ func _on_ready():
 	primaryMenu.openHelpMenu.connect(open_help_menu)
 	primaryMenu.stopDeathClock.connect(stop_death_clock)
 	primaryMenu.startDeathClock.connect(start_death_clock)
+	
+	failMenu.openSettingsMenu.connect(open_settings_menu)
+	failMenu.openHelpMenu.connect(open_help_menu)
+	failMenu.stopDeathClock.connect(stop_death_clock)
+	failMenu.startDeathClock.connect(start_death_clock)
 	
 	primaryMenu.stopLevelCountdownClock.connect(stop_level_countdown_clock)
 	primaryMenu.startLevelCountdownClock.connect(start_level_countdown_clock)
@@ -103,11 +113,12 @@ func start_level_countdown_clock():
 	levelCountdownTimer.start()
 	
 func level_out_of_time():
-	# TODO popup
 	# TODO separate help menu instructions
 	print("You ran out of time to defeat the snowmen!")
+	emit_signal("openFailMenu")
+	levelCountdownTimer.stop()
 
-# Only for start screen?
+# Only for start screen
 func start_game():
 	Game.show_start_screen = false
 	# Creates snow (which then creates snowmen)
@@ -136,6 +147,10 @@ func go_to_previous_popup():
 	elif Game.previous_popup == "pause" or Game.previous_popup == "levelComplete":
 		primaryMenu.visible = true
 		primaryMenuContinueButton.grab_focus()
+	elif Game.previous_popup == "fail":
+		# TODO settings back goes to start screen
+		failMenu.visible = true
+		failMenuRestartButton.grab_focus()
 	else:
 		print("Error: No previous popup - ", Game.previous_popup)
 	

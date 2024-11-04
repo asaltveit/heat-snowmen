@@ -22,6 +22,9 @@ var snowman_creation_timer_wait_time = 10
 
 var primaryMenuType = "" # "pause", "levelComplete"
 
+# For fail menus
+var fail_message_type = 0 # To index messages, 0 or 1
+
 # For level types
 # TODO set these from level resource
 # TODO succeed within time limit and shortest time level type

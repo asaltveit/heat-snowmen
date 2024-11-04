@@ -2,6 +2,7 @@ extends Node2D
 
 signal openLevelMenu
 signal openPrimaryMenu
+signal openFailMenu
 
 @onready var settings = $GameManager/Settings
 
@@ -30,7 +31,7 @@ var final_num_snowmen = 0 # only increase
 var level_start_time
 
 # Limits - Could change based on level in future
-var snowmenLimit = 20
+var snowmenLimit = 5 # 20
 var gameTimeLimit = 300 # 5x60 seconds = 5 minutes
 
 # Is this separately needed?
@@ -127,6 +128,7 @@ func decrease_num_snowmen():
 func increase_num_snowmen():
 	numSnowmen += 1
 	final_num_snowmen += 1
+	print("numSnowmen: ", numSnowmen)
 
 func get_final_time():
 	# TODO: Doesn't pause when game pauses
@@ -152,8 +154,10 @@ func _process(_delta):
 		Game.primaryMenuType = "levelComplete"
 		emit_signal("openPrimaryMenu", final_time, final_num_snowmen)
 	elif numSnowmen >= snowmenLimit:
-		# TODO popup?
+		Game.fail_message_type = 1
+		emit_signal("openFailMenu")
 		print("You lost! You've been overrun with snowmen!")
+		#get_tree().paused = true
 		
 func _on_ice_bg_sound_finished():
 	iceBGSound.play()
