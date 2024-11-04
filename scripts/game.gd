@@ -5,7 +5,7 @@ extends Node2D
 # For scene switching
 var current_scene = null
 
-var previous_popup = null # if null, go back to game
+var previous_popup = "start"
 
 # For level labels and indexing level resources
 var current_level = 0

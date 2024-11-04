@@ -47,6 +47,8 @@ func open_menu(final_time, final_num_snowmen):
 	createTitle()
 	# TODO change tabbing cycle
 	continueButton.grab_focus()
+	
+	Game.previous_popup = Game.primaryMenuType
 
 	# Set fields
 	timeCompletedValue.text = str(final_time)

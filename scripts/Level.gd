@@ -128,7 +128,6 @@ func decrease_num_snowmen():
 func increase_num_snowmen():
 	numSnowmen += 1
 	final_num_snowmen += 1
-	print("numSnowmen: ", numSnowmen)
 
 func get_final_time():
 	# TODO: Doesn't pause when game pauses

@@ -130,12 +130,10 @@ func start_game():
 # secondary menus - TODO func open_secondary_menu(previous, openSignal)
 func open_settings_menu():
 	# TODO slim this down
-	Game.previous_popup = Game.primaryMenuType
 	emit_signal("openSettingsMenu")
 	
 func open_help_menu():
 	# TODO slim this down
-	Game.previous_popup = Game.primaryMenuType
 	emit_signal("openHelpMenu")
 
 # TODO Add tests to make sure only correct popup is visible
@@ -148,8 +146,7 @@ func go_to_previous_popup():
 		primaryMenu.visible = true
 		primaryMenuContinueButton.grab_focus()
 	elif Game.previous_popup == "fail":
-		# TODO settings back goes to start screen
-		failMenu.visible = true
+		failMenuNode.visible = true
 		failMenuRestartButton.grab_focus()
 	else:
 		print("Error: No previous popup - ", Game.previous_popup)

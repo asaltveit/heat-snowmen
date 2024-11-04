@@ -18,7 +18,6 @@ func _process(_delta):
 
 func _on_timeout():
 	Game.level_time_limit -= 1
-	print(Game.level_time_limit)
 	if Game.level_time_limit <= 0:
 		emit_signal("exceedsLevelTimeLimit")
 		# If you don't explicitly stop it, it restarts

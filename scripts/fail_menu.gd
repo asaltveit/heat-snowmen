@@ -28,7 +28,6 @@ func _ready():
 
 
 func open_menu():
-	print("fail_menu open_menu")
 	# stop all of the clocks/timers
 	emit_signal("stopDeathClock")
 	emit_signal("stopLevelCountdownClock")
