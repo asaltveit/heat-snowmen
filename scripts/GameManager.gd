@@ -35,6 +35,13 @@ extends Node
 
 # Figure out all legal stuff for assets
 
+# TODO Add a theme/style for focused on gun?
+# TODO Add tabbing between gun and a possible pause button
+#	(instead of hitting "p"?)
+# possible tab and enter, or always focussed on gun and enter
+# 	to shoot?
+# TODO Add to settings
+
 # Create new snowmen
 @onready var deathClock = $DeathClock
 # Level Countdown Timer
@@ -49,6 +56,7 @@ extends Node
 # Start screen
 @onready var startScreen = $start_screen
 @onready var startScreenNode = $start_screen/Menu
+@onready var startButton = $start_screen/Menu/InnerRectangle/StartButton
 # Internal menus
 @onready var settingsMenu = $Settings
 @onready var helpMenu = $Help
@@ -123,15 +131,12 @@ func open_help_menu():
 func go_to_previous_popup():
 	if Game.previous_popup == "start":
 		startScreenNode.visible = true
-	elif Game.previous_popup == "settings":
-		# Needed?
-		pass
-	elif Game.previous_popup == "help":
-		# Needed?
-		pass
+		# TODO Move these into the actual scene?
+		startButton.grab_focus()
 	elif Game.previous_popup == "pause" or Game.previous_popup == "levelComplete":
 		primaryMenu.visible = true
+		primaryMenuContinueButton.grab_focus()
 	else:
-		print("Error: No previous popup")
+		print("Error: No previous popup - ", Game.previous_popup)
 	
 	

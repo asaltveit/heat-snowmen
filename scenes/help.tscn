@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgq5vfgcp0enx"]
 
-[ext_resource type="PackedScene" uid="uid://bam0yr54g5n11" path="res://scenes/primary_menu_button.tscn" id="1_74km8"]
+[ext_resource type="PackedScene" uid="uid://cjtrpsgul3n1g" path="res://scenes/primary_menu_button.tscn" id="1_74km8"]
 
 [sub_resource type="GDScript" id="GDScript_f1se2"]
 resource_name = "Help"
@@ -8,6 +8,8 @@ script/source = "extends CanvasLayer
 
 @onready var menu = $Menu
 @onready var gameManager = $\"..\"
+
+@onready var backButton = $Menu/BackButton
 
 signal goToPreviousPopup
 
@@ -17,7 +19,7 @@ func _ready():
 # TODO Needs multiple clicks to open 
 func open_help_menu():
 	menu.visible = true
-
+	backButton.grab_focus()
 
 func _on_back_button_pressed():
 	menu.visible = false

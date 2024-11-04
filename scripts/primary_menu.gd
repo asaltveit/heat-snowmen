@@ -10,6 +10,8 @@ extends ColorRect
 @onready var timeCompletedValue = $Container/TimeElapsed/Value
 @onready var snowmenValue = $Container/Snowmen/Value
 
+@onready var continueButton = $Container/ContinueButton
+
 
 signal openSettingsMenu
 signal openHelpMenu
@@ -43,6 +45,8 @@ func open_menu(final_time, final_num_snowmen):
 	animationPlayer.play("RESET")
 	
 	createTitle()
+	# TODO change tabbing cycle
+	continueButton.grab_focus()
 
 	# Set fields
 	timeCompletedValue.text = str(final_time)

@@ -19,6 +19,9 @@ signal startGame
 
 func _ready():
 	Game.primaryMenuType = \"start\"
+	# Need to grab focus whenever a scene starts to enable tabbing
+	# TODO grab focus on start button if coming back
+	startButton.grab_focus()
 
 # TODO add a background
 # TODO fix alignment

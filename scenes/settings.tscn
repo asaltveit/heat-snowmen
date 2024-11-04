@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmqiqdbu0jwn4"]
 
-[ext_resource type="PackedScene" path="res://scenes/primary_menu_button.tscn" id="1_5ot48"]
+[ext_resource type="PackedScene" uid="uid://cjtrpsgul3n1g" path="res://scenes/primary_menu_button.tscn" id="1_5ot48"]
 [ext_resource type="Texture2D" uid="uid://cv8sbk43uhwhj" path="res://assets/sprites/left.png" id="2_ltjbj"]
 
 [sub_resource type="GDScript" id="GDScript_njwyo"]
@@ -28,6 +28,7 @@ func _ready():
 	
 func open_settings_menu():
 	menu.visible = true
+	backButton.grab_focus()
 
 	
 func _on_sounds_toggle_pressed():
