@@ -31,7 +31,7 @@ var final_num_snowmen = 0 # only increase
 var level_start_time
 
 # Limits - Could change based on level in future
-var snowmenLimit = 5 # 20
+var snowmenLimit = 30 # 20
 var gameTimeLimit = 300 # 5x60 seconds = 5 minutes
 
 # Is this separately needed?
@@ -153,7 +153,7 @@ func _process(_delta):
 		Game.primaryMenuType = "levelComplete"
 		emit_signal("openPrimaryMenu", final_time, final_num_snowmen)
 	elif numSnowmen >= snowmenLimit:
-		Game.fail_message_type = 1
+		Game.fail_message_type = 0
 		emit_signal("openFailMenu")
 		print("You lost! You've been overrun with snowmen!")
 		#get_tree().paused = true

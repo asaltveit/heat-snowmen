@@ -16,6 +16,7 @@ signal openSettingsMenu
 signal openHelpMenu
 signal startGame
 
+# TODO Expand menu to cover background
 
 func _ready():
 	Game.primaryMenuType = \"start\"

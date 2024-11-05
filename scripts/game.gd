@@ -30,8 +30,10 @@ var fail_message_type = 0 # To index messages, 0 or 1
 # TODO succeed within time limit and shortest time level type
 # need a var for level type? or just 0 in one and not 0 in the other?
 
-# If 0, timer won't run (except continue on menu)
-var level_time_limit = 0 # in seconds? so 300 = 5 minutes?
+# If 0, timer won't run
+var level_time_limit = 15 # in seconds? so 300 = 5 minutes?
+# Need to keep the limit known, so decrease below instead
+var level_time_remaining = 15
 # TODO don't hit the icecream level type
 var total_icecream = 0
 

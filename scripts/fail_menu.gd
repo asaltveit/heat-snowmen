@@ -8,7 +8,7 @@ extends CanvasLayer
 @onready var gameManager = $".."
 @onready var level = $"../.."
 
-const messages = ["Oh No! You were overrun by snowmen!", "You ran out of time to defeat the snowmen"]
+const messages = ["Oh No! You were overrun by snowmen!", "You ran out of time to defeat the snowmen!"]
 
 # TODO Make this more reusable with the primary menu and start screen
 signal openSettingsMenu
@@ -20,9 +20,8 @@ signal startDeathClock
 signal stopLevelCountdownClock
 signal startLevelCountdownClock
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	failureText.text = messages[Game.fail_message_type]
 	gameManager.openFailMenu.connect(open_menu)
 	level.openFailMenu.connect(open_menu)
 
@@ -34,6 +33,8 @@ func open_menu():
 	
 	Game.previous_popup = "fail"
 	
+	failureText.text = messages[Game.fail_message_type]
+	
 	get_tree().paused = true
 	menu.visible = true
 	$Menu/AnimationPlayer.play("reveal")
@@ -44,6 +45,9 @@ func _on_restart_button_pressed():
 	# Turn on clocks/timers
 	emit_signal("startDeathClock")
 	if Game.level_time_limit > 0:
+		print("on restart in fail menu + there's a time limit")
+		# Reset with limit
+		Game.level_time_remaining = Game.level_time_limit
 		emit_signal("startLevelCountdownClock")
 	
 	get_tree().paused = false

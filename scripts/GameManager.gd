@@ -77,16 +77,19 @@ func _on_ready():
 	
 	primaryMenu.openSettingsMenu.connect(open_settings_menu)
 	primaryMenu.openHelpMenu.connect(open_help_menu)
+	
 	primaryMenu.stopDeathClock.connect(stop_death_clock)
 	primaryMenu.startDeathClock.connect(start_death_clock)
+	primaryMenu.stopLevelCountdownClock.connect(stop_level_countdown_clock)
+	primaryMenu.startLevelCountdownClock.connect(start_level_countdown_clock)
 	
 	failMenu.openSettingsMenu.connect(open_settings_menu)
 	failMenu.openHelpMenu.connect(open_help_menu)
+	
 	failMenu.stopDeathClock.connect(stop_death_clock)
 	failMenu.startDeathClock.connect(start_death_clock)
-	
-	primaryMenu.stopLevelCountdownClock.connect(stop_level_countdown_clock)
-	primaryMenu.startLevelCountdownClock.connect(start_level_countdown_clock)
+	failMenu.stopLevelCountdownClock.connect(stop_level_countdown_clock)
+	failMenu.startLevelCountdownClock.connect(start_level_countdown_clock)
 	
 	startScreen.openSettingsMenu.connect(open_settings_menu)
 	startScreen.openHelpMenu.connect(open_help_menu)
@@ -110,13 +113,15 @@ func stop_level_countdown_clock():
 	levelCountdownTimer.stop()
 	
 func start_level_countdown_clock():
+	print("start signal connected to function")
 	levelCountdownTimer.start()
 	
 func level_out_of_time():
 	# TODO separate help menu instructions
 	print("You ran out of time to defeat the snowmen!")
+	Game.fail_message_type = 1
 	emit_signal("openFailMenu")
-	levelCountdownTimer.stop()
+	#levelCountdownTimer.stop()
 
 # Only for start screen
 func start_game():

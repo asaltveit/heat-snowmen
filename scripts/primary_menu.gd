@@ -1,6 +1,7 @@
 extends ColorRect
 
 # Only for pause menu and level complete menu, currently
+# TODO Should pressing space close the menu?
 
 @onready var menu = $"."
 @onready var level_title = $Container/Title
@@ -60,8 +61,7 @@ func _on_continue_button_pressed():
 	# TODO separate function?
 	emit_signal("startDeathClock")
 	# TODO Only start if it was going
-	# TODO What if it just got to 0 before pause?
-	if Game.level_time_limit > 0:
+	if Game.level_time_remaining > 0:
 		emit_signal("startLevelCountdownClock")
 	
 	get_tree().paused = false
@@ -75,6 +75,8 @@ func _on_restart_button_pressed():
 	# Turn on clocks/timers
 	emit_signal("startDeathClock")
 	if Game.level_time_limit > 0:
+		print("Game.level_time_limit > 0")
+		Game.level_time_remaining = Game.level_time_limit
 		emit_signal("startLevelCountdownClock")
 	
 	get_tree().paused = false
