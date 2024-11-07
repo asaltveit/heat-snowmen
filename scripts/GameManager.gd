@@ -74,6 +74,8 @@ func _on_ready():
 	if not Game.show_start_screen: # or Game.current_level > 0
 		startScreenNode.visible = false
 		deathClock.start()
+		if Game.level_time_limit > 0:
+			levelCountdownTimer.start()
 	
 	primaryMenu.openSettingsMenu.connect(open_settings_menu)
 	primaryMenu.openHelpMenu.connect(open_help_menu)
@@ -113,15 +115,13 @@ func stop_level_countdown_clock():
 	levelCountdownTimer.stop()
 	
 func start_level_countdown_clock():
-	print("start signal connected to function")
 	levelCountdownTimer.start()
 	
 func level_out_of_time():
-	# TODO separate help menu instructions
+	# TODO Add separate help menu instructions
 	print("You ran out of time to defeat the snowmen!")
 	Game.fail_message_type = 1
 	emit_signal("openFailMenu")
-	#levelCountdownTimer.stop()
 
 # Only for start screen
 func start_game():
@@ -157,3 +157,7 @@ func go_to_previous_popup():
 		print("Error: No previous popup - ", Game.previous_popup)
 	
 	
+
+
+func _on_level_count_down_timeout():
+	pass # Replace with function body.

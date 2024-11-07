@@ -72,12 +72,8 @@ func _on_continue_button_pressed():
 		get_tree().reload_current_scene()
 
 func _on_restart_button_pressed():
-	# Turn on clocks/timers
-	emit_signal("startDeathClock")
-	if Game.level_time_limit > 0:
-		print("Game.level_time_limit > 0")
-		Game.level_time_remaining = Game.level_time_limit
-		emit_signal("startLevelCountdownClock")
+	# Reset for level count down timer
+	Game.level_time_remaining = Game.level_time_limit
 	
 	get_tree().paused = false
 	menu.visible = false

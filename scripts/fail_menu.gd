@@ -42,13 +42,8 @@ func open_menu():
 	restartButton.grab_focus()
 
 func _on_restart_button_pressed():
-	# Turn on clocks/timers
-	emit_signal("startDeathClock")
-	if Game.level_time_limit > 0:
-		print("on restart in fail menu + there's a time limit")
-		# Reset with limit
-		Game.level_time_remaining = Game.level_time_limit
-		emit_signal("startLevelCountdownClock")
+	# Reset for level count down timer
+	Game.level_time_remaining = Game.level_time_limit
 	
 	get_tree().paused = false
 	menu.visible = false

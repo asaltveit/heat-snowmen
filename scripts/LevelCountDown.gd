@@ -4,9 +4,9 @@ signal exceedsLevelTimeLimit
 
 # TODO show countdown on screen
 #	Don't let snow or snowmen overlap
+
 	
 func _process(_delta):
-	#print("")
 	pass
 	
 func _on_timeout():
@@ -16,5 +16,7 @@ func _on_timeout():
 		emit_signal("exceedsLevelTimeLimit")
 		# If you don't explicitly stop it, it restarts
 		self.stop()
+		print("self.paused: ", self.paused)
 	else:
 		self.start()
+		
