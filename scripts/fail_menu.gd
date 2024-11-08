@@ -25,7 +25,6 @@ func _ready():
 	gameManager.openFailMenu.connect(open_menu)
 	level.openFailMenu.connect(open_menu)
 
-
 func open_menu():
 	# stop all of the clocks/timers
 	emit_signal("stopDeathClock")

@@ -69,7 +69,7 @@ func _ready():
 		deathClock.wait_time = levelParameters.snow_time
 		Game.snowman_creation_timer_wait_time = levelParameters.snowmen_time
 		# TODO Use once it's added to the resource
-		Game.level_time_limit = 15#levelParameters.level_time_limit || 0
+		Game.level_time_limit = 30#levelParameters.level_time_limit || 0
 		
 	deathClock.createSnow.connect(create_random_snow)
 	settings.toggleBgMusic.connect(toggle_bg_music)

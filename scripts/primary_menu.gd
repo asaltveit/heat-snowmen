@@ -1,7 +1,6 @@
 extends ColorRect
 
 # Only for pause menu and level complete menu, currently
-# TODO Should pressing space close the menu?
 
 @onready var menu = $"."
 @onready var level_title = $Container/Title
