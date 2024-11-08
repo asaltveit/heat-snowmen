@@ -61,15 +61,20 @@ func _ready():
 	# Level doesn't exist - default parameters
 	if Game.current_level >= len(LEVELS_LIST):
 		create_starting_snowmen(locations)
+		Game.level_time_limit = 0
 	else:
 		# Set level parameters
 		var levelParameters = LEVELS_LIST[Game.current_level]
 		create_starting_snowmen(levelParameters.snowmen_locations)
 		deathClock.wait_time = levelParameters.snow_time
 		Game.snowman_creation_timer_wait_time = levelParameters.snowmen_time
+		# TODO Use once it's added to the resource
+		Game.level_time_limit = 15#levelParameters.level_time_limit || 0
 		
 	deathClock.createSnow.connect(create_random_snow)
 	settings.toggleBgMusic.connect(toggle_bg_music)
+	
+	Game.level_time_remaining = Game.level_time_limit
 	
 	# Only when level starts - needed?
 	if Game.bg_music_on:

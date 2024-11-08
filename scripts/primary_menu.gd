@@ -60,12 +60,13 @@ func _on_continue_button_pressed():
 	# Turn on clocks/timers
 	# TODO separate function?
 	emit_signal("startDeathClock")
-	# TODO Only start if it was going
+	# Only start if it was going
 	if Game.level_time_remaining > 0:
 		emit_signal("startLevelCountdownClock")
 	
 	get_tree().paused = false
 	menu.visible = false
+	
 	if Game.primaryMenuType == "levelComplete":
 		# Can just reload with new resource
 		Game.current_level += 1

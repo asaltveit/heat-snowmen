@@ -16,7 +16,6 @@ func _on_timeout():
 		emit_signal("exceedsLevelTimeLimit")
 		# If you don't explicitly stop it, it restarts
 		self.stop()
-		print("self.paused: ", self.paused)
 	else:
 		self.start()
 		
