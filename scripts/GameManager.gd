@@ -65,6 +65,9 @@ extends Node
 @onready var failMenuNode = $FailMenu/Menu
 @onready var failMenuRestartButton = $"FailMenu/Menu/RestartButton"
 
+# Shows level count down
+@onready var TimerLabel = $TimerLabel
+
 signal openSettingsMenu
 signal openHelpMenu
 signal openFailMenu
@@ -75,6 +78,7 @@ func _on_ready():
 		startScreenNode.visible = false
 		deathClock.start()
 		if Game.level_time_limit > 0:
+			TimerLabel.visible = true
 			levelCountdownTimer.start()
 	
 	primaryMenu.openSettingsMenu.connect(open_settings_menu)
@@ -130,6 +134,7 @@ func start_game():
 	start_death_clock()
 	# Check if using countdown for this level
 	if Game.level_time_limit > 0:
+		TimerLabel.visible = true
 		levelCountdownTimer.start()
 	
 # secondary menus - TODO func open_secondary_menu(previous, openSignal)
