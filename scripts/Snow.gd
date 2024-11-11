@@ -7,9 +7,6 @@ signal createSnowman
 
 @onready var snowmanCreationTimer = $SnowmanCreationTimer
 
-# TODO Needed?
-func create_snow():
-	pass
 
 func hit():
 		# removes snow

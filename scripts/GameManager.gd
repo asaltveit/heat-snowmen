@@ -18,7 +18,7 @@ extends Node
 # so 3/4 level types: time limit, # snowmen before getting rid of all?,
 # icecream - add time, collect icecream
 
-# TODO Add a game ending scene (when player is out of levels)
+# Add a game ending scene (when player is out of levels)
 #	Plus an option to go back into other levels
 
 # TODO Add to resources:
@@ -71,6 +71,7 @@ extends Node
 signal openSettingsMenu
 signal openHelpMenu
 signal openFailMenu
+signal openChooseLevelMenu
 
 func _on_ready():
 	# Only show start screen on first level+not on restart
@@ -98,6 +99,7 @@ func _on_ready():
 	failMenu.startLevelCountdownClock.connect(start_level_countdown_clock)
 	
 	startScreen.openSettingsMenu.connect(open_settings_menu)
+	startScreen.openChooseLevelMenu.connect(open_choose_level_menu)
 	startScreen.openHelpMenu.connect(open_help_menu)
 	startScreen.startGame.connect(start_game)
 	
@@ -145,6 +147,9 @@ func open_settings_menu():
 func open_help_menu():
 	# TODO slim this down
 	emit_signal("openHelpMenu")
+	
+func open_choose_level_menu():
+	emit_signal("openChooseLevelMenu")
 
 # TODO Add tests to make sure only correct popup is visible
 func go_to_previous_popup():

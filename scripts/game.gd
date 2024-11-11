@@ -10,6 +10,8 @@ var previous_popup = "start"
 # For level labels and indexing level resources
 var current_level = 0
 
+var all_levels = 1
+
 # Toggle sound/music in settings
 var bg_music_on = true
 var sounds_on = true

@@ -12,8 +12,5 @@ func _process(_delta):
 	pass
 	
 func _on_timer_timeout():
-	# TODO switch to observer signal
 	emit_signal("createSnowman", $".".global_position)
 	# aiming for "game" as grandparent
-	#get_parent().get_parent().create_random_snow()
-	#pass

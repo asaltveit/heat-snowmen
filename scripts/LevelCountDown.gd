@@ -4,10 +4,7 @@ signal exceedsLevelTimeLimit
 
 @onready var LevelTimerValue = $"../TimerLabel/InnerRectangle/TimeLeftValue"
 
-# TODO show countdown on screen
-#	Don't let snow or snowmen overlap
 
-	
 func _process(_delta):
 	pass
 	

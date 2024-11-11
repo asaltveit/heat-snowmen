@@ -49,7 +49,6 @@ func hit():
 		# start death timer
 		deathTimer.start()
 		# Above allows stuff to happen before the snowman disappears
-		# TODO Add fading animation?
 		 
 func _on_death_timer_timeout():
 	emit_signal("decreaseSnowmen")
