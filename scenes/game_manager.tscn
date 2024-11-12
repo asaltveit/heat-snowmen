@@ -24,6 +24,7 @@ wait_time = 300.0
 script = ExtResource("3_uvel8")
 
 [node name="start_screen" parent="." instance=ExtResource("5_iqb6n")]
+visible = false
 
 [node name="Settings" parent="." instance=ExtResource("5_j7y0l")]
 
@@ -88,6 +89,7 @@ text = "0s"
 vertical_alignment = 1
 
 [node name="ChooseLevelMenu" parent="." instance=ExtResource("10_vq67o")]
+visible = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="LevelCountDown" to="LevelCountDown" method="_on_timeout"]
