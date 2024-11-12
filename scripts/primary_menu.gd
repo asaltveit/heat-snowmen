@@ -22,6 +22,14 @@ signal startDeathClock
 signal stopLevelCountdownClock
 signal startLevelCountdownClock
 
+# TODO Have restart button with just icon and tooltip
+#	Have it btw a home button and start?
+# TODO Have help instructions specific to each level show before it,
+#	be able to open them in the game directly? 
+#	Or still go to primary menu?
+# That's a lot of buttons to have
+
+
 func _ready():
 	level.openPrimaryMenu.connect(open_menu)
 	

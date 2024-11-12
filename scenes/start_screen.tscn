@@ -19,6 +19,9 @@ signal openChooseLevelMenu
 
 # TODO Expand menu to cover background
 
+# TODO have animations not running in background before starting?
+#	In case it runs down battery?
+
 func _ready():
 	Game.primaryMenuType = \"start\"
 	# Need to grab focus whenever a scene starts to enable tabbing
@@ -39,12 +42,12 @@ func _on_start_button_pressed():
 
 func _on_settings_button_pressed():
 	emit_signal(\"openSettingsMenu\")
-	menu.visible = false # is this needed?
+	menu.visible = false 
 	
 
 func _on_help_button_pressed():
 	emit_signal(\"openHelpMenu\")
-	menu.visible = false # is this needed?
+	menu.visible = false 
 	
 
 func _on_choose_level_button_pressed():

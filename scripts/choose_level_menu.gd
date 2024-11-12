@@ -2,7 +2,7 @@ extends CanvasLayer
 
 # TODO make a reusable menu for settings, help, choose level menus
 @onready var menu = $Menu
-@onready var backButton = $Menu/BackButton
+@onready var backButton = $Menu/InnerRectangle/BackButton
 @onready var gridContainer = $Menu/InnerRectangle/GridContainer
 @onready var gameManager = $".."
 
@@ -18,12 +18,6 @@ func _ready():
 		var button = preload("res://scenes/primary_menu_button.tscn").instantiate()
 		gridContainer.add_child(button)
 		button.pressed.connect(go_to_level.bind(button))
-		#var x = 100+(200*level)
-		#var y = 100+(100*level)
-		#button.global_position = Vector2(x, y)
-		#button.custom_minimum_size = 
-		#button.size.x = 200
-		#button.size.y = 66
 		button.tooltip_text = "Choose level"
 		button.text = "Level " + str(level)
 		button.set_meta("level", int(level))
@@ -32,17 +26,17 @@ func _ready():
 func go_to_level(button):
 	Game.current_level = button.get_meta("level")
 	get_tree().paused = false
-	self.visible = false
+	menu.visible = false
 	emit_signal("startGame")
 	# Restart current scene
 	get_tree().reload_current_scene()
 	
 
 func open_choose_level_menu():
-	self.visible = true
 	menu.visible = true
 	backButton.grab_focus()
 
+
 func _on_back_button_pressed():
-	self.visible = false
+	menu.visible = false
 	emit_signal("goToPreviousPopup")

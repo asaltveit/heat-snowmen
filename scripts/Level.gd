@@ -143,9 +143,6 @@ func get_final_time():
 	final_time = time_rounded
 
 func _process(_delta):
-	# Needed?
-	#if not Game.bg_music_on:
-		#iceBGSound.stop()
 	if Input.is_action_just_pressed("pause"):
 		get_final_time()
 		Game.primaryMenuType = "pause"

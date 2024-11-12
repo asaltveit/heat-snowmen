@@ -132,7 +132,7 @@ func level_out_of_time():
 	Game.fail_message_type = 1
 	emit_signal("openFailMenu")
 
-# Only for start screen
+# Only for start screen (why? choose_level_menu needs it too)
 func start_game():
 	Game.show_start_screen = false
 	# Creates snow (which then creates snowmen)
@@ -155,6 +155,7 @@ func open_choose_level_menu():
 	emit_signal("openChooseLevelMenu")
 
 # TODO Add tests to make sure only correct popup is visible
+# TODO Add access to choose_level_menu other places than start_screen
 func go_to_previous_popup():
 	if Game.previous_popup == "start":
 		startScreenNode.visible = true
@@ -169,8 +170,6 @@ func go_to_previous_popup():
 	else:
 		print("Error: No previous popup - ", Game.previous_popup)
 	
-	
-
-
+# TODO Do something with this?
 func _on_level_count_down_timeout():
 	pass # Replace with function body.
