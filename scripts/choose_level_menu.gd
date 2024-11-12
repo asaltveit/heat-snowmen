@@ -14,7 +14,6 @@ func _ready():
 	gameManager.openChooseLevelMenu.connect(open_choose_level_menu)
 
 	for level in Game.all_levels:
-		# TODO button width, height, placement
 		var button = preload("res://scenes/primary_menu_button.tscn").instantiate()
 		gridContainer.add_child(button)
 		button.pressed.connect(go_to_level.bind(button))

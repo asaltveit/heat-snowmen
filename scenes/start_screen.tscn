@@ -17,8 +17,6 @@ signal openHelpMenu
 signal startGame
 signal openChooseLevelMenu
 
-# TODO Expand menu to cover background
-
 # TODO have animations not running in background before starting?
 #	In case it runs down battery?
 
@@ -30,9 +28,6 @@ func _ready():
 
 # TODO add a background
 # TODO fix alignment
-
-func _process(_delta):
-	pass
 
 func _on_start_button_pressed():
 	# Goes to first level
@@ -59,8 +54,8 @@ func _on_choose_level_button_pressed():
 script = SubResource("GDScript_xiput")
 
 [node name="Menu" type="ColorRect" parent="."]
-offset_right = 1147.0
-offset_bottom = 645.0
+offset_right = 1164.0
+offset_bottom = 659.0
 
 [node name="InnerRectangle" type="ColorRect" parent="Menu"]
 layout_mode = 0

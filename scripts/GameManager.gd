@@ -132,7 +132,7 @@ func level_out_of_time():
 	Game.fail_message_type = 1
 	emit_signal("openFailMenu")
 
-# Only for start screen (why? choose_level_menu needs it too)
+# Only for start screen and choose_level_menu
 func start_game():
 	Game.show_start_screen = false
 	# Creates snow (which then creates snowmen)
