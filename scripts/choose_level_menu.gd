@@ -3,7 +3,7 @@ extends CanvasLayer
 # TODO make a reusable menu for settings, help, choose level menus
 @onready var menu = $Menu
 @onready var backButton = $Menu/InnerRectangle/BackButton
-@onready var gridContainer = $Menu/InnerRectangle/GridContainer
+@onready var gridContainer = $Menu/InnerRectangle/ScrollContainer/GridContainer
 @onready var gameManager = $".."
 
 signal goToPreviousPopup
@@ -12,7 +12,8 @@ signal startGame
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gameManager.openChooseLevelMenu.connect(open_choose_level_menu)
-
+	#Game.all_levels = 20 # To test grid
+	# TODO expand width of buttons
 	for level in Game.all_levels:
 		var button = preload("res://scenes/primary_menu_button.tscn").instantiate()
 		gridContainer.add_child(button)

@@ -23,14 +23,14 @@ signal openChooseLevelMenu
 func _ready():
 	Game.primaryMenuType = \"start\"
 	# Need to grab focus whenever a scene starts to enable tabbing
-	# TODO grab focus on start button if coming back
 	startButton.grab_focus()
 
 # TODO add a background
 # TODO fix alignment
 
 func _on_start_button_pressed():
-	# Goes to first level
+	# Goes to first level 
+	# (technically will go whichever Game.current_level it is)
 	emit_signal(\"startGame\")
 	menu.visible = false
 

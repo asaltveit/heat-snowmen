@@ -59,7 +59,8 @@ func _ready():
 	# create_icecream()
 
 	# Level doesn't exist - default parameters
-	if Game.current_level >= Game.all_levels:
+	# or Game.all_levels > 3 for testing choose_level_menu
+	if Game.current_level >= Game.all_levels or Game.all_levels > 3:
 		create_starting_snowmen(locations)
 		Game.level_time_limit = 0
 	else:

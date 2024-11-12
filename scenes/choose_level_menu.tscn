@@ -37,14 +37,18 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Choose Level"
 
-[node name="GridContainer" type="GridContainer" parent="Menu/InnerRectangle"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Menu/InnerRectangle"]
 layout_mode = 0
-offset_left = 91.0
-offset_top = 116.0
-offset_right = 780.0
-offset_bottom = 402.0
+offset_left = 83.0
+offset_top = 125.0
+offset_right = 795.0
+offset_bottom = 393.0
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="Menu/InnerRectangle/ScrollContainer"]
+layout_mode = 2
 theme_override_constants/h_separation = 75
-theme_override_constants/v_separation = 30
+theme_override_constants/v_separation = 50
 columns = 4
 
 [connection signal="pressed" from="Menu/InnerRectangle/BackButton" to="." method="_on_back_button_pressed"]
