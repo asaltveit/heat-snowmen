@@ -57,7 +57,7 @@ var locations = [Vector2(274, 181), Vector2(100, 181)]
 func _ready():
 	# For testing icecream
 	# create_icecream()
-	Game.all_levels = len(LEVELS_LIST)
+
 	# Level doesn't exist - default parameters
 	if Game.current_level >= Game.all_levels:
 		create_starting_snowmen(locations)

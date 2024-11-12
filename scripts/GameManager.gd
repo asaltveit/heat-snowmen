@@ -60,6 +60,7 @@ extends Node
 # Internal menus
 @onready var settingsMenu = $Settings
 @onready var helpMenu = $Help
+@onready var chooseLevelMenu = $ChooseLevelMenu
 # Fail Menu
 @onready var failMenu = $FailMenu
 @onready var failMenuNode = $FailMenu/Menu
@@ -105,6 +106,8 @@ func _on_ready():
 	
 	settingsMenu.goToPreviousPopup.connect(go_to_previous_popup)
 	helpMenu.goToPreviousPopup.connect(go_to_previous_popup)
+	chooseLevelMenu.goToPreviousPopup.connect(go_to_previous_popup)
+	chooseLevelMenu.startGame.connect(start_game)
 	
 	levelCountdownTimer.exceedsLevelTimeLimit.connect(level_out_of_time)
 	

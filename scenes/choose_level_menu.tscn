@@ -5,9 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://cv8sbk43uhwhj" path="res://assets/sprites/left.png" id="2_3sfow"]
 
 [node name="ChooseLevelMenu" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_xuvxg")
 
 [node name="Menu" type="ColorRect" parent="."]
+visible = false
 offset_right = 1155.0
 offset_bottom = 654.0
 

@@ -50,3 +50,4 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_n4eg3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ouolq")
 icon_alignment = 2
 expand_icon = true
+metadata/level = 0
