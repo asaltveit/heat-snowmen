@@ -2,6 +2,8 @@ extends ColorRect
 
 # TODO Use with resources?
 
+# TODO Use HBoxContainer here
+
 func _ready():
 	pass # Replace with function body.
 

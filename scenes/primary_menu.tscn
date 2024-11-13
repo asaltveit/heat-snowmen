@@ -65,9 +65,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -374.5
-offset_top = -208.5
+offset_top = -222.0
 offset_right = 374.5
-offset_bottom = 208.5
+offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 0.65098, 1)
@@ -87,26 +87,47 @@ text = "title"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="TimeElapsed" type="ColorRect" parent="Menu/Container/Border"]
+[node name="TopRightButtons" type="VBoxContainer" parent="Menu/Container/Border"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -61.0
-offset_right = -61.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -131.0
+offset_top = 50.0
+offset_bottom = 180.0
+grow_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="SettingsButton" parent="Menu/Container/Border/TopRightButtons" instance=ExtResource("2_y3k16")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+
+[node name="HelpButton" parent="Menu/Container/Border/TopRightButtons" instance=ExtResource("2_y3k16")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Help"
+
+[node name="Stats" type="VBoxContainer" parent="Menu/Container/Border"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 91.0
+offset_right = 423.0
+offset_bottom = 374.0
+theme_override_constants/separation = 50
+
+[node name="TimeElapsed" type="ColorRect" parent="Menu/Container/Border/Stats"]
+layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Label" type="Label" parent="Menu/Container/Border/TimeElapsed"]
+[node name="Label" type="Label" parent="Menu/Container/Border/Stats/TimeElapsed"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 210.0
-offset_right = 546.0
-offset_bottom = 27.0
+offset_top = -14.0
+offset_right = 336.0
+offset_bottom = 14.0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
@@ -114,69 +135,57 @@ text = "Time: "
 vertical_alignment = 1
 uppercase = true
 
-[node name="Value" type="Label" parent="Menu/Container/Border/TimeElapsed"]
+[node name="Value" type="Label" parent="Menu/Container/Border/Stats/TimeElapsed"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -668.0
-offset_right = -585.0
-offset_bottom = 28.0
+offset_left = -83.0
+offset_top = -14.0
+offset_bottom = 14.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "0"
 
-[node name="Snowmen" type="ColorRect" parent="Menu/Container/Border"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -11.0
-offset_top = -75.0
-offset_right = -11.0
-offset_bottom = -75.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Snowmen" type="ColorRect" parent="Menu/Container/Border/Stats"]
+layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Label" type="Label" parent="Menu/Container/Border/Snowmen"]
+[node name="Label" type="Label" parent="Menu/Container/Border/Stats/Snowmen"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 210.0
-offset_top = 40.0
-offset_right = 354.0
-offset_bottom = 67.0
+offset_top = -14.0
+offset_right = 185.0
+offset_bottom = 14.0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Total snowmen: "
 uppercase = true
 
-[node name="Value" type="Label" parent="Menu/Container/Border/Snowmen"]
+[node name="Value" type="Label" parent="Menu/Container/Border/Stats/Snowmen"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -668.0
-offset_top = 40.0
-offset_right = -588.0
-offset_bottom = 68.0
+offset_left = -80.0
+offset_top = -14.0
+offset_bottom = 14.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "1"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu/Container/Border"]
+[node name="FooterButtons" type="HBoxContainer" parent="Menu/Container/Border"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -188,41 +197,17 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 60
 
-[node name="ChooseLevelButton" parent="Menu/Container/Border/HBoxContainer" instance=ExtResource("2_y3k16")]
+[node name="ChooseLevelButton" parent="Menu/Container/Border/FooterButtons" instance=ExtResource("2_y3k16")]
 layout_mode = 2
 text = "Choose Level"
 
-[node name="RestartButton" parent="Menu/Container/Border/HBoxContainer" instance=ExtResource("2_y3k16")]
+[node name="RestartButton" parent="Menu/Container/Border/FooterButtons" instance=ExtResource("2_y3k16")]
 layout_mode = 2
 text = "Restart"
 
-[node name="ContinueButton" parent="Menu/Container/Border/HBoxContainer" instance=ExtResource("2_y3k16")]
+[node name="ContinueButton" parent="Menu/Container/Border/FooterButtons" instance=ExtResource("2_y3k16")]
 layout_mode = 2
 text = "Continue"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Container/Border"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -131.0
-offset_top = -65.0
-offset_bottom = 65.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="SettingsButton" parent="Menu/Container/Border/VBoxContainer" instance=ExtResource("2_y3k16")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Settings"
-
-[node name="HelpButton" parent="Menu/Container/Border/VBoxContainer" instance=ExtResource("2_y3k16")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Help"
 
 [node name="OpenMenuAnimation" type="AnimationPlayer" parent="Menu"]
 root_node = NodePath("../..")
@@ -230,7 +215,7 @@ libraries = {
 "": SubResource("AnimationLibrary_qt1qt")
 }
 
-[connection signal="pressed" from="Menu/Container/Border/HBoxContainer/RestartButton" to="Menu" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Menu/Container/Border/HBoxContainer/ContinueButton" to="Menu" method="_on_continue_button_pressed"]
-[connection signal="pressed" from="Menu/Container/Border/VBoxContainer/SettingsButton" to="Menu" method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Menu/Container/Border/VBoxContainer/HelpButton" to="Menu" method="_on_help_button_pressed"]
+[connection signal="pressed" from="Menu/Container/Border/TopRightButtons/SettingsButton" to="Menu" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Menu/Container/Border/TopRightButtons/HelpButton" to="Menu" method="_on_help_button_pressed"]
+[connection signal="pressed" from="Menu/Container/Border/FooterButtons/RestartButton" to="Menu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Menu/Container/Border/FooterButtons/ContinueButton" to="Menu" method="_on_continue_button_pressed"]
