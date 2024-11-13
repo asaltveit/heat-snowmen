@@ -35,6 +35,7 @@ func _ready():
 	
 	
 func createTitle():
+	print("In createTitle")
 	if Game.primaryMenuType == "pause":
 		# Game.current_level used to index an array (starts at 0)
 		level_title.text = "Level " + str(Game.current_level+1) + " Paused"
@@ -42,6 +43,8 @@ func createTitle():
 		level_title.text = "Level " + str(Game.current_level+1) + " Complete!"
 	else:
 		level_title.text = "Menu" # Just in case
+	level_title.add_theme_color_override('font_color', Color(0, 0, 0, 1))
+	#print("level_title.get_theme_color('font_color'): ", level_title.get_theme_color('font_color'))
 
 func open_menu(final_time, final_num_snowmen):
 	# stop all of the clocks/timers
@@ -53,7 +56,7 @@ func open_menu(final_time, final_num_snowmen):
 	animationPlayer.play("RESET")
 	
 	createTitle()
-	# TODO change tabbing cycle
+	# TODO change tabbing cycle (?)
 	continueButton.grab_focus()
 	
 	Game.previous_popup = Game.primaryMenuType
@@ -65,7 +68,6 @@ func open_menu(final_time, final_num_snowmen):
 
 func _on_continue_button_pressed():
 	# Turn on clocks/timers
-	# TODO separate function?
 	emit_signal("startDeathClock")
 	# Only start if it was going
 	if Game.level_time_remaining > 0:

@@ -11,12 +11,13 @@ signal startGame
 
 func _ready():
 	gameManager.openChooseLevelMenu.connect(open_choose_level_menu)
-	Game.all_levels = 20 # To test grid
+	#Game.all_levels = 20 # To test grid
 	for level in Game.all_levels:
 		var button = preload("res://scenes/primary_menu_button.tscn").instantiate()
 		gridContainer.add_child(button)
 		button.pressed.connect(go_to_level.bind(button))
 		button.tooltip_text = "Choose level"
+		# Don't want 'Level 0'
 		button.text = "Level " + str(level+1)
 		button.set_meta("level", int(level))
 
