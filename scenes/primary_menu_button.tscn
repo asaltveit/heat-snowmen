@@ -34,7 +34,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [node name="PrimaryMenuButton" type="Button"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+custom_minimum_size = Vector2(120, 40)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
