@@ -3,6 +3,7 @@ extends Node2D
 signal openLevelMenu
 signal openPrimaryMenu
 signal openFailMenu
+signal setStat
 
 @onready var settings = $GameManager/Settings
 
@@ -19,6 +20,10 @@ const LEVELS_LIST: Array[LevelParameters] = [
 	preload("res://scripts/resources/level_2.tres"),
 	preload("res://scripts/resources/level_3.tres")
 ]
+
+# TODO Should there be a separate resource for menus?
+#	Help menus will have different text depending on level
+#	primary_menu has different stats depending on level
 
 # For snow creation
 var rand_y

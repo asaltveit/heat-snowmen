@@ -51,8 +51,8 @@ extends Node
 
 # Primary Menu (for pause or level completed)
 @onready var primaryMenu = $PrimaryMenu/Menu
-@onready var primaryMenuContinueButton = $"PrimaryMenu/Menu/Container/ContinueButton"
-@onready var primaryMenuRestartButton = $"PrimaryMenu/Menu/Container/RestartButton"
+@onready var primaryMenuContinueButton = $"PrimaryMenu/Menu/Container/Border/FooterButtons/ContinueButton"
+@onready var primaryMenuRestartButton = $"PrimaryMenu/Menu/Container/Border/FooterButtons/RestartButton"
 # Start screen
 @onready var startScreen = $start_screen
 @onready var startScreenNode = $start_screen/Menu
@@ -143,6 +143,7 @@ func start_game():
 		levelCountdownTimer.start()
 	
 # secondary menus - TODO func open_secondary_menu(previous, openSignal)
+# Functions that just pass on a signal
 func open_settings_menu():
 	# TODO slim this down
 	emit_signal("openSettingsMenu")
@@ -153,6 +154,7 @@ func open_help_menu():
 	
 func open_choose_level_menu():
 	emit_signal("openChooseLevelMenu")
+	
 
 # TODO Add tests to make sure only correct popup is visible
 # TODO Add access to choose_level_menu other places than start_screen
