@@ -22,7 +22,7 @@ signal startDeathClock
 signal stopLevelCountdownClock
 signal startLevelCountdownClock
 
-#signal setStats
+# TODO Should white borders be same width for sides and top/bottom?
 
 # TODO Where does the eye go? To a middle or right continue button?
 # TODO Continue button needs to stand out more
@@ -44,6 +44,7 @@ func _ready():
 	level.openPrimaryMenu.connect(open_menu)
 	# TODO Will this reset when level changes?
 	createStats()
+	# TODO running game takes a while to load now
 	
 	
 func createTitle():
@@ -55,7 +56,7 @@ func createTitle():
 	else:
 		level_title.text = "Menu" # Just in case
 	
-
+# TODO Have default structures to choose from instead?
 func createStats():
 	for label in statLabels:
 		var stat = preload("res://scenes/stat.tscn").instantiate()

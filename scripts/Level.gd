@@ -3,7 +3,9 @@ extends Node2D
 signal openLevelMenu
 signal openPrimaryMenu
 signal openFailMenu
+
 signal setStat
+signal setTimeLeftStat
 
 @onready var settings = $GameManager/Settings
 
@@ -62,6 +64,8 @@ var locations = [Vector2(274, 181), Vector2(100, 181)]
 func _ready():
 	# For testing icecream
 	# create_icecream()
+	
+	# TODO LevelCountDown starts with 0s - confusing
 
 	# Level doesn't exist - default parameters
 	# or Game.all_levels > 3 for testing choose_level_menu
@@ -81,6 +85,7 @@ func _ready():
 	settings.toggleBgMusic.connect(toggle_bg_music)
 	
 	Game.level_time_remaining = Game.level_time_limit
+	emit_signal("setTimeLeftStat")
 	
 	# Only when level starts - needed?
 	if Game.bg_music_on:

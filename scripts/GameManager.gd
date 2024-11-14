@@ -68,6 +68,7 @@ extends Node
 
 # Shows level count down
 @onready var TimerLabel = $TimerLabel
+@onready var LevelTimerValue = $TimerLabel/InnerRectangle/TimeLeftValue
 
 signal openSettingsMenu
 signal openHelpMenu
@@ -82,6 +83,8 @@ func _on_ready():
 		if Game.level_time_limit > 0:
 			TimerLabel.visible = true
 			levelCountdownTimer.start()
+	
+	level.setTimeLeftStat.connect(set_time_left_stat)
 	
 	primaryMenu.openSettingsMenu.connect(open_settings_menu)
 	primaryMenu.openHelpMenu.connect(open_help_menu)
@@ -156,6 +159,8 @@ func open_help_menu():
 func open_choose_level_menu():
 	emit_signal("openChooseLevelMenu")
 	
+func set_time_left_stat():
+	LevelTimerValue.text = str(Game.level_time_remaining) + 's'
 
 # TODO Add tests to make sure only correct popup is visible
 # TODO Add access to choose_level_menu other places than start_screen
