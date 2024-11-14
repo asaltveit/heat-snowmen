@@ -100,11 +100,15 @@ theme_override_constants/separation = 20
 
 [node name="SettingsButton" parent="Menu/Container/Border/TopRightButtons" instance=ExtResource("2_y3k16")]
 layout_mode = 2
+focus_next = NodePath("../../FooterButtons/ChooseLevelButton")
+focus_previous = NodePath("../HelpButton")
 theme_override_font_sizes/font_size = 20
 text = "Settings"
 
 [node name="HelpButton" parent="Menu/Container/Border/TopRightButtons" instance=ExtResource("2_y3k16")]
 layout_mode = 2
+focus_next = NodePath("../SettingsButton")
+focus_previous = NodePath("../../FooterButtons/ContinueButton")
 theme_override_font_sizes/font_size = 20
 text = "Help"
 
@@ -130,14 +134,20 @@ theme_override_constants/separation = 60
 
 [node name="ChooseLevelButton" parent="Menu/Container/Border/FooterButtons" instance=ExtResource("2_y3k16")]
 layout_mode = 2
+focus_next = NodePath("../RestartButton")
+focus_previous = NodePath("../../TopRightButtons/SettingsButton")
 text = "Choose Level"
 
 [node name="RestartButton" parent="Menu/Container/Border/FooterButtons" instance=ExtResource("2_y3k16")]
 layout_mode = 2
+focus_next = NodePath("../ContinueButton")
+focus_previous = NodePath("../ChooseLevelButton")
 text = "Restart"
 
 [node name="ContinueButton" parent="Menu/Container/Border/FooterButtons" instance=ExtResource("2_y3k16")]
 layout_mode = 2
+focus_next = NodePath("../../TopRightButtons/HelpButton")
+focus_previous = NodePath("../RestartButton")
 text = "Continue"
 
 [node name="OpenMenuAnimation" type="AnimationPlayer" parent="Menu"]

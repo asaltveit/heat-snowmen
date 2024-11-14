@@ -21,7 +21,7 @@ signal startDeathClock
 signal stopLevelCountdownClock
 signal startLevelCountdownClock
 
-signal setStats
+#signal setStats
 
 # TODO Where does the eye go? To a middle or right continue button?
 # TODO Continue button needs to stand out more
@@ -41,6 +41,8 @@ var statLabels = ['Time:', 'Total Snowmen:']
 
 func _ready():
 	level.openPrimaryMenu.connect(open_menu)
+	# TODO Will this reset when level changes?
+	createStats()
 	
 	
 func createTitle():
@@ -53,19 +55,25 @@ func createTitle():
 		level_title.text = "Menu" # Just in case
 	
 
-func createStats(final_time, final_num_snowmen):
+func createStats():
 	for label in statLabels:
 		var stat = preload("res://scenes/stat.tscn").instantiate()
-		print(stat)
 		statsContainer.add_child(stat)
 		stat.get_node("Label").text = label
-		# TODO Use resource to set
-		if label == statLabels[0]:
-			stat.get_node("Value").text = str(final_time)
-		else:
-			stat.get_node("Value").text = str(final_num_snowmen)
 
 
+func setStats(values):
+	var stats = statsContainer.get_children()
+	# Make sure len(values) == len(Stats.get_children())
+	if len(values) == len(statsContainer.get_children()):
+		for index in range(len(statsContainer.get_children())):
+			# TODO Handle string conversion somewhere else?
+			stats[index].get_node("Value").text = str(values[index])
+	else:
+		print("Error: Unsure how to map values to labels")
+
+
+# Open with a list of values to input in order?
 func open_menu(final_time, final_num_snowmen):
 	# stop all of the clocks/timers
 	emit_signal("stopDeathClock")
@@ -76,17 +84,12 @@ func open_menu(final_time, final_num_snowmen):
 	animationPlayer.play("RESET")
 	
 	createTitle()
-	# TODO change tabbing cycle (?)
+	# TODO Should the section have a title like "Stats:"?
+	setStats([final_time, final_num_snowmen])
+
 	continueButton.grab_focus()
 	
 	Game.previous_popup = Game.primaryMenuType
-	
-	# TODO Set appropriate stats using a resource/resources
-	createStats(final_time, final_num_snowmen)
-
-	# Set fields
-	#timeCompletedValue.text = str(final_time)
-	#snowmenValue.text = str(final_num_snowmen)
 
 
 func _on_continue_button_pressed():
