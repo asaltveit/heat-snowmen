@@ -158,5 +158,6 @@ libraries = {
 
 [connection signal="pressed" from="Menu/Container/Border/TopRightButtons/SettingsButton" to="Menu" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Menu/Container/Border/TopRightButtons/HelpButton" to="Menu" method="_on_help_button_pressed"]
+[connection signal="pressed" from="Menu/Container/Border/FooterButtons/ChooseLevelButton" to="Menu" method="_on_choose_level_button_pressed"]
 [connection signal="pressed" from="Menu/Container/Border/FooterButtons/RestartButton" to="Menu" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Menu/Container/Border/FooterButtons/ContinueButton" to="Menu" method="_on_continue_button_pressed"]

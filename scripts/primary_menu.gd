@@ -14,6 +14,7 @@ extends ColorRect
 
 signal openSettingsMenu
 signal openHelpMenu
+signal openChooseLevelMenu
 
 signal stopDeathClock
 signal startDeathClock
@@ -116,6 +117,7 @@ func _on_restart_button_pressed():
 	# Restart current scene
 	get_tree().reload_current_scene()
 
+# TODO Is there a way to be more reusable?
 func _on_settings_button_pressed():
 	emit_signal("openSettingsMenu")
 	menu.visible = false
@@ -124,3 +126,6 @@ func _on_help_button_pressed():
 	emit_signal("openHelpMenu")
 	menu.visible = false
 
+func _on_choose_level_button_pressed():
+	emit_signal("openChooseLevelMenu")
+	menu.visible = false

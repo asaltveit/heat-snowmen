@@ -85,6 +85,7 @@ func _on_ready():
 	
 	primaryMenu.openSettingsMenu.connect(open_settings_menu)
 	primaryMenu.openHelpMenu.connect(open_help_menu)
+	primaryMenu.openChooseLevelMenu.connect(open_choose_level_menu)
 	
 	primaryMenu.stopDeathClock.connect(stop_death_clock)
 	primaryMenu.startDeathClock.connect(start_death_clock)
