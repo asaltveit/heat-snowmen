@@ -2,9 +2,9 @@ extends CanvasLayer
 
 # TODO Add fail menu resource - failure text
 
-@onready var failureText = $Menu/FailureText
+@onready var failureText = $Menu/InnerRectangle/Border/FailureText
 @onready var menu = $Menu
-@onready var restartButton = $Menu/RestartButton
+@onready var restartButton = $Menu/InnerRectangle/Border/FooterButtons/RestartButton
 @onready var gameManager = $".."
 @onready var level = $"../.."
 
@@ -13,6 +13,7 @@ const messages = ["Oh No! You were overrun by snowmen!", "You ran out of time to
 # TODO Make this more reusable with the primary menu and start screen
 signal openSettingsMenu
 signal openHelpMenu
+signal openChooseLevelMenu
 
 signal stopDeathClock
 signal startDeathClock
@@ -55,4 +56,8 @@ func _on_settings_button_pressed():
 
 func _on_help_button_pressed():
 	emit_signal("openHelpMenu")
+	menu.visible = false
+
+func _on_choose_level_button_pressed():
+	emit_signal("openChooseLevelMenu")
 	menu.visible = false

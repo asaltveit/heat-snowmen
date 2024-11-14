@@ -64,7 +64,7 @@ extends Node
 # Fail Menu
 @onready var failMenu = $FailMenu
 @onready var failMenuNode = $FailMenu/Menu
-@onready var failMenuRestartButton = $"FailMenu/Menu/RestartButton"
+@onready var failMenuRestartButton = $"FailMenu/Menu/InnerRectangle/Border/FooterButtons/RestartButton"
 
 # Shows level count down
 @onready var TimerLabel = $TimerLabel
@@ -97,6 +97,7 @@ func _on_ready():
 	
 	failMenu.openSettingsMenu.connect(open_settings_menu)
 	failMenu.openHelpMenu.connect(open_help_menu)
+	failMenu.openChooseLevelMenu.connect(open_choose_level_menu)
 	
 	failMenu.stopDeathClock.connect(stop_death_clock)
 	failMenu.startDeathClock.connect(start_death_clock)
