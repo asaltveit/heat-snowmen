@@ -8,16 +8,16 @@ script/source = "extends CanvasLayer
 
 @onready var menu = $Menu
 @onready var gameManager = $\"..\"
-
-@onready var backButton = $Menu/BackButton
+@onready var backButton = $Menu/Container/Border/FooterButtons/BackButton
 
 signal goToPreviousPopup
 
+# TODO Change text depending on level type
 func _ready():
 	gameManager.openHelpMenu.connect(open_help_menu)
 
-# TODO Needs multiple clicks to open 
 func open_help_menu():
+	print(\"in help open_help_menu\")
 	menu.visible = true
 	backButton.grab_focus()
 
@@ -30,37 +30,95 @@ func _on_back_button_pressed():
 script = SubResource("GDScript_f1se2")
 
 [node name="Menu" type="ColorRect" parent="."]
+process_mode = 3
 visible = false
-offset_right = 1167.0
-offset_bottom = 661.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 12.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Title" type="Label" parent="Menu"]
-layout_mode = 0
-offset_left = 376.0
-offset_top = 4.0
-offset_right = 717.0
-offset_bottom = 59.0
+[node name="Container" type="ColorRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -435.5
+offset_top = -261.0
+offset_right = 435.5
+offset_bottom = 261.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.65098, 1)
+
+[node name="Border" type="ColorRect" parent="Menu/Container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -374.5
+offset_top = -222.0
+offset_right = 374.5
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.65098, 1)
+
+[node name="Title" type="Label" parent="Menu/Container/Border"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 55.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Help"
+horizontal_alignment = 1
 
-[node name="BackButton" parent="Menu" instance=ExtResource("1_74km8")]
+[node name="Body" type="Label" parent="Menu/Container/Border"]
 layout_mode = 1
-offset_left = 399.0
-offset_top = -330.0
-offset_right = 535.0
-offset_bottom = -272.0
-text = "Back"
-
-[node name="Body" type="Label" parent="Menu"]
-layout_mode = 0
-offset_left = 376.0
-offset_top = 168.0
-offset_right = 701.0
-offset_bottom = 246.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -55.5
+offset_right = 257.0
+offset_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
 text = "Press the spacebar to shoot the snowmen.
 
-Press p to pause"
+Press p to pause."
 
-[connection signal="pressed" from="Menu/BackButton" to="." method="_on_back_button_pressed"]
+[node name="FooterButtons" type="HBoxContainer" parent="Menu/Container/Border"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -55.0
+offset_right = 60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 60
+
+[node name="BackButton" parent="Menu/Container/Border/FooterButtons" instance=ExtResource("1_74km8")]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="Menu/Container/Border/FooterButtons/BackButton" to="." method="_on_back_button_pressed"]

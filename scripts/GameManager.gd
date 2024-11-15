@@ -154,7 +154,6 @@ func open_settings_menu():
 	emit_signal("openSettingsMenu")
 	
 func open_help_menu():
-	# TODO slim this down
 	emit_signal("openHelpMenu")
 	
 func open_choose_level_menu():
