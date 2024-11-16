@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmqiqdbu0jwn4"]
+[gd_scene load_steps=3 format=3 uid="uid://cmqiqdbu0jwn4"]
 
 [ext_resource type="PackedScene" uid="uid://cjtrpsgul3n1g" path="res://scenes/primary_menu_button.tscn" id="1_5ot48"]
-[ext_resource type="Texture2D" uid="uid://cv8sbk43uhwhj" path="res://assets/sprites/left.png" id="2_ltjbj"]
 
 [sub_resource type="GDScript" id="GDScript_njwyo"]
 resource_name = "settings"
@@ -9,8 +8,8 @@ script/source = "extends CanvasLayer
 
 @onready var menu = $Menu
 @onready var gameManager = $\"..\"
-@onready var soundsButton = $Menu/VBoxContainer/SoundHBox/Toggle
-@onready var bgMusicButton = $Menu/VBoxContainer/BGMusicHBox/Toggle
+@onready var soundsButton = $Menu/VBoxContainer/SoundContainer/Toggle
+@onready var bgMusicButton = $Menu/VBoxContainer/BGMusicContainer/Toggle
 
 @onready var backButton = $Menu/BackButton
 
@@ -39,21 +38,21 @@ func _on_back_button_pressed():
 	emit_signal(\"goToPreviousPopup\")
 
 
-func _on_sounds_toggle_toggled(toggled_on):
+func _on_sounds_toggle_toggled(toggled_off):
 	Game.toggle_sounds()
-	if toggled_on:
-		soundsButton.text = \"on\"
-	else:
+	if toggled_off:
 		soundsButton.text = \"off\"
+	else:
+		soundsButton.text = \"on\"
 
 
-func _on_bg_music_toggle_toggled(toggled_on):
+func _on_bg_music_toggle_toggled(toggled_off):
 	Game.toggle_bg_music()
 	emit_signal(\"toggleBgMusic\")
-	if toggled_on:
-		bgMusicButton.text = \"on\"
-	else:
+	if toggled_off:
 		bgMusicButton.text = \"off\"
+	else:
+		bgMusicButton.text = \"on\"
 "
 
 [node name="Settings" type="CanvasLayer"]
@@ -78,7 +77,6 @@ offset_top = -180.0
 offset_right = 684.0
 offset_bottom = -114.0
 text = "Back"
-icon = ExtResource("2_ltjbj")
 
 [node name="Title" type="Label" parent="Menu"]
 layout_mode = 0
@@ -91,50 +89,94 @@ theme_override_font_sizes/font_size = 40
 text = "Settings"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
-layout_mode = 0
-offset_left = 226.0
-offset_top = 171.0
-offset_right = 470.0
-offset_bottom = 435.0
-theme_override_constants/separation = 30
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -132.0
+offset_right = 122.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
 
-[node name="SoundHBox" type="HBoxContainer" parent="Menu/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+[node name="SoundContainer" type="ColorRect" parent="Menu/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 100
 
-[node name="Label" type="Label" parent="Menu/VBoxContainer/SoundHBox"]
+[node name="Label" type="Label" parent="Menu/VBoxContainer/SoundContainer"]
 custom_minimum_size = Vector2(75, 30)
-layout_mode = 2
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 95.0
+offset_bottom = 15.0
+grow_vertical = 2
+size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 text = "Sounds:"
 
-[node name="Toggle" type="Button" parent="Menu/VBoxContainer/SoundHBox"]
-layout_mode = 2
+[node name="Toggle" type="Button" parent="Menu/VBoxContainer/SoundContainer"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 22
 toggle_mode = true
 text = "on"
 
-[node name="BGMusicHBox" type="HBoxContainer" parent="Menu/VBoxContainer"]
+[node name="BGMusicContainer" type="ColorRect" parent="Menu/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 100
 
-[node name="Label" type="Label" parent="Menu/VBoxContainer/BGMusicHBox"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
+[node name="Label" type="Label" parent="Menu/VBoxContainer/BGMusicContainer"]
+custom_minimum_size = Vector2(75, 30)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 95.0
+offset_bottom = 15.0
+grow_vertical = 2
+size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 text = "BG Music:"
 
-[node name="Toggle" type="Button" parent="Menu/VBoxContainer/BGMusicHBox"]
-layout_mode = 2
+[node name="Toggle" type="Button" parent="Menu/VBoxContainer/BGMusicContainer"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 22
 toggle_mode = true
 text = "on"
 
 [connection signal="pressed" from="Menu/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="toggled" from="Menu/VBoxContainer/SoundHBox/Toggle" to="." method="_on_sounds_toggle_toggled"]
-[connection signal="toggled" from="Menu/VBoxContainer/BGMusicHBox/Toggle" to="." method="_on_bg_music_toggle_toggled"]
+[connection signal="toggled" from="Menu/VBoxContainer/SoundContainer/Toggle" to="." method="_on_sounds_toggle_toggled"]
+[connection signal="toggled" from="Menu/VBoxContainer/BGMusicContainer/Toggle" to="." method="_on_bg_music_toggle_toggled"]
