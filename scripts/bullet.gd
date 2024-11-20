@@ -28,3 +28,8 @@ func _on_body_entered(body):
 		body.hit()
 	# removes bullet
 	queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	# removes bullet
+	queue_free()
